@@ -62,10 +62,7 @@ const Signup = ({ onNavigate }) => {
           <div className="max-w-lg mx-auto lg:mx-0">
             {/* Logo */}
             <div className="flex items-center space-x-3 mb-8 lg:mb-12">
-              <div className="p-2 bg-teal-500 rounded-lg">
-                <FaChartLine className="text-black text-2xl" />
-              </div>
-              <h1 className="text-2xl font-bold text-white">QuantumFX</h1>
+              <h1 className="text-2xl font-bold text-white">Stratix</h1>
             </div>
 
             {/* Main Value Proposition */}
@@ -74,60 +71,10 @@ const Signup = ({ onNavigate }) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-                Start Your <span className="text-teal-400">AI Trading</span>{" "}
-                Journey Today
-              </h2>
-
               <p className="text-xl text-gray-300 mb-8">
                 Join thousands of successful traders who trust our AI to grow
                 their portfolios 24/7.
               </p>
-
-              {/* Benefit Highlights */}
-              <div className="space-y-6 mt-8">
-                <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-teal-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <FaCheck className="text-teal-400" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-lg mb-1">
-                      No Trading Experience Needed
-                    </h4>
-                    <p className="text-gray-400">
-                      Our AI handles all the complex analysis and execution
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-teal-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <FaCheck className="text-teal-400" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-lg mb-1">
-                      Risk Management Built-in
-                    </h4>
-                    <p className="text-gray-400">
-                      Smart algorithms protect your capital from volatility
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-teal-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <FaCheck className="text-teal-400" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-lg mb-1">
-                      7-Day Free Trial
-                    </h4>
-                    <p className="text-gray-400">
-                      Test our AI with zero commitment before subscribing
-                    </p>
-                  </div>
-                </div>
-              </div>
             </motion.div>
           </div>
         </div>
@@ -326,7 +273,7 @@ const Signup = ({ onNavigate }) => {
                 <p className="text-gray-400">
                   Already have an account?{" "}
                   <button
-                    onClick={() => onNavigate("login")}
+                    onClick={() => onNavigate("/login")}
                     className="text-teal-400 hover:text-teal-300 font-semibold transition-colors"
                   >
                     Sign in

@@ -32,31 +32,10 @@ const Login = ({ onNavigate }) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-                AI-Powered <span className="text-teal-400">Forex Trading</span>{" "}
-                Made Effortless
-              </h2>
-
               <p className="text-xl text-gray-300 mb-8">
                 Let our AI analyze markets 24/7 and execute profitable trades
                 while you focus on what matters.
               </p>
-
-              {/* Feature Highlights */}
-              <div className="space-y-4 mt-8">
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-teal-500 rounded-full"></div>
-                  <span className="text-gray-300">99.8% AI accuracy rate</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-teal-500 rounded-full"></div>
-                  <span className="text-gray-300">24/7 market monitoring</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-teal-500 rounded-full"></div>
-                  <span className="text-gray-300">Bank-level security</span>
-                </div>
-              </div>
             </motion.div>
           </div>
         </div>
