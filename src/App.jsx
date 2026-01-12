@@ -7,9 +7,9 @@ import {
 } from "react-router-dom";
 import localforage from "localforage";
 import Landing from "./pages/Landing";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
-const Login = () => <h1 className="text-3xl">Login</h1>;
-const Signup = () => <h1 className="text-3xl">Sign Up</h1>;
 const ForgotPassword = () => <h1 className="text-3xl">Forgot Password</h1>;
 const LinkingAccount = () => <h1 className="text-3xl">Linking Account</h1>;
 const Home = () => <h1 className="text-3xl">Home (Protected)</h1>;

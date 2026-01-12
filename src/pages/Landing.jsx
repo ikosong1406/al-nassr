@@ -281,16 +281,20 @@ function App() {
                 whileTap={{ scale: 0.95 }}
                 className="flex items-center space-x-2 px-4 py-2 text-teal-400 border border-teal-400 rounded-lg hover:bg-teal-400/10 transition-colors"
               >
-                <FaSignInAlt />
-                <span>Sign In</span>
+                <a href="/login" className="flex items-center space-x-2">
+                  <FaSignInAlt />
+                  <span>Sign In</span>
+                </a>
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-lg hover:from-teal-600 hover:to-teal-700 transition-all"
               >
-                <FaUserPlus />
-                <span>Get Started</span>
+                <a href="/signup" className="flex items-center space-x-2">
+                  <FaUserPlus />
+                  <span>Get Started</span>
+                </a>
               </motion.button>
             </div>
 
@@ -327,15 +331,19 @@ function App() {
                     whileTap={{ scale: 0.95 }}
                     className="flex items-center justify-center space-x-2 py-3 text-teal-400 border border-teal-400 rounded-lg"
                   >
-                    <FaSignInAlt />
-                    <span>Sign In</span>
+                    <a href="/login" className="flex items-center space-x-2">
+                      <FaSignInAlt />
+                      <span>Sign In</span>
+                    </a>
                   </motion.button>
                   <motion.button
                     whileTap={{ scale: 0.95 }}
                     className="flex items-center justify-center space-x-2 py-3 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-lg"
                   >
-                    <FaUserPlus />
-                    <span>Get Started</span>
+                    <a href="/signup" className="flex items-center space-x-2">
+                      <FaUserPlus />
+                      <span>Get Started</span>
+                    </a>
                   </motion.button>
                 </div>
               </div>
@@ -458,16 +466,20 @@ function App() {
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl font-semibold text-lg hover:from-teal-600 hover:to-teal-700 transition-all shadow-lg shadow-teal-500/20"
               >
-                Start Trading
+                <a href="/login" className="flex justify-center space-x-2">
+                  Start Trading
+                </a>
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-4 bg-transparent border-2 border-teal-500 text-teal-400 rounded-xl font-semibold text-lg hover:bg-teal-500/10 transition-all"
               >
-                <span className="flex items-center justify-center gap-2">
-                  Create Account
-                </span>
+                <a href="/signup" className="flex justify-center space-x-2">
+                  <span className="flex items-center justify-center gap-2">
+                    Create Account
+                  </span>
+                </a>
               </motion.button>
             </div>
 
@@ -748,10 +760,13 @@ function App() {
               whileTap={{ scale: 0.95 }}
               className="group px-10 py-5 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl font-bold text-xl hover:from-teal-600 hover:to-teal-700 transition-all shadow-2xl shadow-teal-500/30"
             >
-              <span className="flex items-center justify-center gap-3">
-                Launch Trading Dashboard
+              <a
+                className="flex items-center justify-center gap-3"
+                href="/signup"
+              >
+                Launch Trading
                 <FaArrowRight className="group-hover:translate-x-2 transition-transform" />
-              </span>
+              </a>
             </motion.button>
 
             <motion.div
