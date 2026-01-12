@@ -156,17 +156,10 @@ function App() {
     {
       number: "02",
       title: "Configure Strategy",
-      description:
-        "Choose from pre-built AI strategies or customize your own parameters.",
+      description: "Choose from pre-built AI strategies",
     },
     {
       number: "03",
-      title: "Set Risk Level",
-      description:
-        "Define your risk tolerance and capital allocation preferences.",
-    },
-    {
-      number: "04",
       title: "Activate AI",
       description:
         "Start the bot and let AI handle trading 24/7 automatically.",
@@ -422,7 +415,6 @@ function App() {
             style={{
               backgroundImage:
                 'url("https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=2070")',
-              // 'url("https://i.pinimg.com/originals/cb/07/60/cb07601b2d5a4335c20880ea71b82edd.gif")',
             }}
           ></div>
           <div className="absolute inset-0 bg-black/70"></div>
@@ -518,7 +510,7 @@ function App() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8">
             {howItWorksSteps.map((step, index) => (
               <motion.div
                 key={index}
