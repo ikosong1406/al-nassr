@@ -1,6 +1,7 @@
 // src/components/Login.jsx - Professional Redesign
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import {
   FaChartLine,
   FaEnvelope,
@@ -10,9 +11,14 @@ import {
   FaArrowRight,
 } from "react-icons/fa";
 
-const Login = ({ onNavigate }) => {
+const Login = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
+
+  const handleLogin = (e) => {
+    navigate("/linking");
+  }
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -79,12 +85,13 @@ const Login = ({ onNavigate }) => {
                     <label className="block text-sm font-medium text-gray-300">
                       Password
                     </label>
-                    <button
+                    <a
                       type="button"
                       className="text-sm text-teal-400 hover:text-teal-300 transition-colors"
+                      href="/forgot"
                     >
                       Forgot password?
-                    </button>
+                    </a>
                   </div>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -115,6 +122,7 @@ const Login = ({ onNavigate }) => {
                   whileTap={{ scale: 0.98 }}
                   type="submit"
                   className="w-full py-3 bg-gradient-to-r from-teal-500 to-teal-600 text-white font-semibold rounded-lg hover:from-teal-600 hover:to-teal-700 transition-all flex items-center justify-center space-x-2"
+                  onClick={handleLogin}
                 >
                   <span>Sign In</span>
                   <FaArrowRight />
