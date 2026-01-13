@@ -13,6 +13,7 @@ import Signup from "./pages/Signup";
 import ForgotPassword from "./pages/Forgot";
 import LinkingAccount from "./pages/Linking";
 import TabNavigator from "./pages/Tab";
+import Bot from "./pages/Bot";
 
 // Updated Screen Components with better UI
 const Home = () => (
@@ -63,41 +64,6 @@ const Trade = () => (
             <p className="text-green-400">+2.4%</p>
           </div>
         ))}
-      </div>
-    </div>
-  </div>
-);
-
-const Bot = () => (
-  <div
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    className="space-y-6"
-  >
-    <div className="bg-gradient-to-r from-teal-900/20 to-teal-800/10 rounded-xl p-6 border border-teal-800/30">
-      <div className="flex items-center justify-between mb-6">
-        <div>
-          <h2 className="text-2xl font-bold">AI Trading Bot</h2>
-          <p className="text-gray-400">Automated trading powered by AI</p>
-        </div>
-        <div className="flex items-center space-x-2">
-          <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
-          <span className="text-green-400">Active</span>
-        </div>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-black/50 rounded-lg p-4">
-          <p className="text-gray-400">Total Trades</p>
-          <p className="text-2xl font-bold">127</p>
-        </div>
-        <div className="bg-black/50 rounded-lg p-4">
-          <p className="text-gray-400">Win Rate</p>
-          <p className="text-2xl font-bold text-green-400">78.5%</p>
-        </div>
-        <div className="bg-black/50 rounded-lg p-4">
-          <p className="text-gray-400">Profit</p>
-          <p className="text-2xl font-bold">+$3,456.78</p>
-        </div>
       </div>
     </div>
   </div>
@@ -269,10 +235,8 @@ function App() {
           }
         >
           <Route path="home" element={<Home />} />
-          <Route path="trade" element={<Trade />} />
           <Route path="bot" element={<Bot />} />
           <Route path="history" element={<History />} />
-          <Route path="settings" element={<Settings />} />
           <Route index element={<Navigate to="/home" replace />} />
         </Route>
 
