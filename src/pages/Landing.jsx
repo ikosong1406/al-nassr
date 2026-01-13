@@ -428,7 +428,7 @@ function App() {
           <div className="absolute inset-0 bg-gradient-to-b from-teal-500/10 to-black"></div>
         </div>
 
-        <div className="container mx-auto px-4 py-20 relative z-10 text-center">
+        <div className="container mx-auto px-4 py-10 relative z-10 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -442,19 +442,19 @@ function App() {
               className="inline-flex items-center space-x-2 bg-teal-500/10 border border-teal-500/30 rounded-full px-4 py-2 mb-8"
             >
               <FaRocket className="text-teal-400" />
-              <span className="text-teal-400 font-medium">
+              <p className="text-teal-400 font-medium">
                 AI-Powered Trading Revolution
-              </span>
+              </p>
             </motion.div>
 
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+            <h1 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
               Trade Smarter with{" "}
               <span className="bg-gradient-to-r from-teal-400 to-teal-600 bg-clip-text text-transparent">
                 AI Precision
               </span>
             </h1>
 
-            <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto">
+            <p className="text-lg md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto">
               Our advanced AI trading bot analyzes millions of data points to
               execute profitable forex trades 24/7. Maximize your returns while
               minimizing risk.
@@ -494,8 +494,8 @@ function App() {
                   key={index}
                   className="bg-black/40 backdrop-blur-sm border border-gray-800 rounded-xl p-6 hover:border-teal-500/50 transition-all"
                 >
-                  <div className="text-3xl text-teal-400 mb-2">{stat.icon}</div>
-                  <div className="text-4xl font-bold mb-1">{stat.value}</div>
+                  <div className="text-2xl text-teal-400 mb-2">{stat.icon}</div>
+                  <div className="text-2xl font-bold mb-1">{stat.value}</div>
                   <div className="text-gray-400">{stat.label}</div>
                 </div>
               ))}
@@ -513,10 +513,10 @@ function App() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <h2 className="text-2xl md:text-4xl font-bold mb-4">
               How It <span className="text-teal-400">Works</span>
             </h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-400 max-w-3xl mx-auto">
               Get started with AI trading in just 4 simple steps
             </p>
           </motion.div>
@@ -532,10 +532,10 @@ function App() {
                 className="relative"
               >
                 <div className="bg-black/50 border border-gray-800 rounded-xl p-8 hover:border-teal-500/50 transition-all h-full">
-                  <div className="text-5xl font-bold text-teal-400/30 mb-4">
+                  <div className="text-3xl font-bold text-teal-400/30 mb-4">
                     {step.number}
                   </div>
-                  <h3 className="text-2xl font-bold mb-4">{step.title}</h3>
+                  <h3 className="text-xl font-bold mb-4">{step.title}</h3>
                   <p className="text-gray-400">{step.description}</p>
                 </div>
                 {index < howItWorksSteps.length - 1 && (
@@ -556,10 +556,10 @@ function App() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <h2 className="text-2xl md:text-4xl font-bold mb-4">
               Powerful <span className="text-teal-400">Features</span>
             </h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-400 max-w-3xl mx-auto">
               Everything you need for successful automated forex trading in one
               platform
             </p>
@@ -576,10 +576,10 @@ function App() {
                 transition={{ delay: index * 0.1 }}
                 className="bg-gray-900 border border-gray-800 rounded-xl p-8 hover:border-teal-500/50 transition-all group"
               >
-                <div className="text-4xl text-teal-400 mb-6 group-hover:scale-110 transition-transform">
+                <div className="text-2xl text-teal-400 mb-6 group-hover:scale-110 transition-transform">
                   {feature.icon}
                 </div>
-                <h3 className="text-2xl font-bold mb-4">{feature.title}</h3>
+                <h3 className="text-xl font-bold mb-4">{feature.title}</h3>
                 <p className="text-gray-400">{feature.description}</p>
               </motion.div>
             ))}
@@ -596,10 +596,10 @@ function App() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <h2 className="text-2xl md:text-4xl font-bold mb-4">
               Enterprise-Grade <span className="text-teal-400">Security</span>
             </h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-400 max-w-3xl mx-auto">
               Your funds and data are protected with military-grade security
               measures
             </p>
@@ -635,10 +635,10 @@ function App() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <h2 className="text-2xl md:text-4xl font-bold mb-4">
               Trusted by <span className="text-teal-400">Traders</span>
             </h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-400 max-w-3xl mx-auto">
               Join thousands of successful traders who trust our AI trading
               platform
             </p>
@@ -686,10 +686,10 @@ function App() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <h2 className="text-2xl md:text-4xl font-bold mb-4">
               Frequently Asked <span className="text-teal-400">Questions</span>
             </h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-400 max-w-3xl mx-auto">
               Find answers to common questions about our AI trading platform
             </p>
           </motion.div>
@@ -707,7 +707,7 @@ function App() {
                 <div className="flex items-start">
                   <FaQuestionCircle className="text-teal-400 mr-4 mt-1 flex-shrink-0" />
                   <div>
-                    <h3 className="text-xl font-bold mb-3">{item.question}</h3>
+                    <h3 className="text-lg font-bold mb-3">{item.question}</h3>
                     <p className="text-gray-400">{item.answer}</p>
                   </div>
                 </div>
@@ -741,7 +741,7 @@ function App() {
               </span>
             </motion.div>
 
-            <h2 className="text-4xl md:text-6xl font-bold mb-6">
+            <h2 className="text-2xl md:text-4xl font-bold mb-6">
               Start Your{" "}
               <span className="bg-gradient-to-r from-teal-400 to-teal-600 bg-clip-text text-transparent">
                 Automated Trading
@@ -749,7 +749,7 @@ function App() {
               Journey
             </h2>
 
-            <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-300 mb-10 max-w-2xl mx-auto">
               Join thousands of traders who trust our AI to grow their
               portfolios. No experience needed - our bot does all the heavy
               lifting.
@@ -783,7 +783,7 @@ function App() {
                 { value: "24/7", label: "Support" },
               ].map((stat, index) => (
                 <div key={index} className="text-center">
-                  <div className="text-3xl font-bold text-teal-400">
+                  <div className="text-xl md:text-2xl font-bold text-teal-400">
                     {stat.value}
                   </div>
                   <div className="text-gray-400">{stat.label}</div>

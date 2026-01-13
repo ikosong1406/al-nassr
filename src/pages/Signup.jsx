@@ -61,7 +61,7 @@ const Signup = ({ onNavigate }) => {
         <div className="lg:w-1/2 bg-gradient-to-br from-gray-900 via-black to-teal-900/20 p-8 md:p-12 lg:p-16 flex flex-col justify-center">
           <div className="max-w-lg mx-auto lg:mx-0">
             {/* Logo */}
-            <div className="flex items-center space-x-3 mb-8 lg:mb-12">
+            <div className="flex items-center space-x-3 mb-2 lg:mb-12">
               <h1 className="text-2xl font-bold text-white">Stratix</h1>
             </div>
 
@@ -71,7 +71,7 @@ const Signup = ({ onNavigate }) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <p className="text-xl text-gray-300 mb-8">
+              <p className="text-base text-gray-300 italic">
                 Join thousands of successful traders who trust our AI to grow
                 their portfolios 24/7.
               </p>
@@ -252,7 +252,6 @@ const Signup = ({ onNavigate }) => {
                     >
                       Privacy Policy
                     </button>
-                    . I understand that forex trading involves risk.
                   </label>
                 </div>
 
@@ -272,12 +271,12 @@ const Signup = ({ onNavigate }) => {
               <div className="mt-8 pt-6 border-t border-gray-800 text-center">
                 <p className="text-gray-400">
                   Already have an account?{" "}
-                  <button
-                    onClick={() => onNavigate("/login")}
+                  <a
+                    href="/login"
                     className="text-teal-400 hover:text-teal-300 font-semibold transition-colors"
                   >
                     Sign in
-                  </button>
+                  </a>
                 </p>
               </div>
 
@@ -285,10 +284,6 @@ const Signup = ({ onNavigate }) => {
               <div className="mt-6 space-y-3">
                 <p className="text-xs text-gray-500 text-center">
                   Your data is secured with 256-bit SSL encryption
-                </p>
-                <p className="text-xs text-gray-500 text-center">
-                  Forex trading involves substantial risk of loss and is not
-                  suitable for all investors
                 </p>
               </div>
             </motion.div>

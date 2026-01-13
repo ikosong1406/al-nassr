@@ -22,7 +22,7 @@ const Login = ({ onNavigate }) => {
         <div className="lg:w-1/2 bg-gradient-to-br from-gray-900 via-black to-teal-900/20 p-8 md:p-12 lg:p-16 flex flex-col justify-center">
           <div className="max-w-lg mx-auto lg:mx-0">
             {/* Logo */}
-            <div className="flex items-center space-x-3 mb-8 lg:mb-12">
+            <div className="flex items-center space-x-3 mb-4 lg:mb-12">
               <h1 className="text-2xl font-bold text-white">Stratix</h1>
             </div>
 
@@ -32,7 +32,7 @@ const Login = ({ onNavigate }) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <p className="text-xl text-gray-300 mb-8">
+              <p className="text-base text-gray-300 italic">
                 Let our AI analyze markets 24/7 and execute profitable trades
                 while you focus on what matters.
               </p>
@@ -109,21 +109,6 @@ const Login = ({ onNavigate }) => {
                   </div>
                 </div>
 
-                {/* Remember Me */}
-                <div className="flex items-center">
-                  <input
-                    type="checkbox"
-                    id="rememberMe"
-                    className="w-4 h-4 text-teal-600 bg-gray-800 border-gray-700 rounded focus:ring-teal-500 focus:ring-2"
-                  />
-                  <label
-                    htmlFor="rememberMe"
-                    className="ml-2 text-sm text-gray-300"
-                  >
-                    Remember me for 30 days
-                  </label>
-                </div>
-
                 {/* Submit Button */}
                 <motion.button
                   whileHover={{ scale: 1.02 }}
@@ -140,12 +125,12 @@ const Login = ({ onNavigate }) => {
               <div className="mt-8 pt-6 border-t border-gray-800 text-center">
                 <p className="text-gray-400">
                   Don't have an account?{" "}
-                  <button
-                    onClick={() => onNavigate("signup")}
+                  <a
+                    href="/signup"
                     className="text-teal-400 hover:text-teal-300 font-semibold transition-colors"
                   >
                     Sign up
-                  </button>
+                  </a>
                 </p>
               </div>
 
