@@ -17,7 +17,7 @@ const AccountLink = () => {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate("/home");
+    navigate("/app/home");
   };
   // Simulate connection progress
   useEffect(() => {

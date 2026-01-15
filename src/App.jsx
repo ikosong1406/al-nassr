@@ -227,7 +227,7 @@ function App() {
 
         {/* Protected Routes wrapped with TabNavigator */}
         <Route
-          path="/"
+          path="/app"
           element={
             // <ProtectedRoute>
             <TabNavigator />
@@ -236,8 +236,10 @@ function App() {
         >
           <Route path="home" element={<Home />} />
           <Route path="bot" element={<Bot />} />
+          <Route path="trade" element={<Trade />} />
           <Route path="history" element={<History />} />
-          <Route index element={<Navigate to="/home" replace />} />
+          <Route path="settings" element={<Settings />} />
+          <Route index element={<Navigate to="/app/home" replace />} />
         </Route>
 
         {/* Catch-all redirect */}

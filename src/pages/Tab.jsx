@@ -21,9 +21,9 @@ const TabNavigator = () => {
   const navigate = useNavigate();
 
   const tabs = [
-    { id: "/home", label: "Trade", icon: FaChartLine },
-    { id: "/bot", label: "AI Bot", icon: FaRobot },
-    { id: "/history", label: "History", icon: FaHistory },
+    { id: "/app/home", label: "Trade", icon: FaChartLine },
+    { id: "/app/bot", label: "AI Bot", icon: FaRobot },
+    { id: "/app/history", label: "History", icon: FaHistory },
   ];
 
   // Update active tab when route changes
