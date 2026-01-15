@@ -75,7 +75,7 @@ const Home = () => {
 
     toast.success(
       <div>
-        <p className="font-semibold">💰 Profit Alert!</p>
+        <p className="font-semibold">💰Profit Alert!</p>
         <p className="text-sm">
           {randomPair}: +${profit}
         </p>
@@ -223,20 +223,6 @@ const Home = () => {
                 ))}
               </tbody>
             </table>
-          </div>
-          <div className="mt-6 pt-6 border-t border-gray-800 flex justify-between items-center">
-            <div>
-              <p className="text-gray-400 text-sm">Total Exposure</p>
-              <p className="text-xl font-bold">$4,500.00</p>
-            </div>
-            <div>
-              <p className="text-gray-400 text-sm">Margin Used</p>
-              <p className="text-xl font-bold">$1,125.00</p>
-            </div>
-            <div>
-              <p className="text-gray-400 text-sm">Free Margin</p>
-              <p className="text-xl font-bold text-green-400">$11,331.78</p>
-            </div>
           </div>
         </div>
       </div>
