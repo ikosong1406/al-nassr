@@ -1,5 +1,5 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   FaCheck,
   FaStar,
@@ -7,6 +7,8 @@ import {
   FaGift,
   FaCrown,
   FaDollarSign,
+  FaChevronLeft,
+  FaChevronRight,
 } from "react-icons/fa";
 
 const prizes = [
@@ -155,8 +157,50 @@ const prizes = [
 ];
 
 const Prizes = () => {
-  // Duplicate prizes for seamless marquee effect
-  const marqueePrizes = [...prizes, ...prizes, ...prizes];
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [itemsPerView, setItemsPerView] = useState(3);
+  const totalItems = prizes.length;
+
+  // Handle responsive items per view
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setItemsPerView(1);
+      } else if (window.innerWidth < 1024) {
+        setItemsPerView(2);
+      } else {
+        setItemsPerView(3);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const maxIndex = Math.max(0, totalItems - itemsPerView);
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
+  };
+
+  const goToSlide = (index) => {
+    setCurrentIndex(Math.min(index, maxIndex));
+  };
+
+  // Auto-rotate carousel
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [currentIndex, maxIndex]);
+
+  const visiblePrizes = prizes.slice(currentIndex, currentIndex + itemsPerView);
 
   return (
     <section
@@ -190,37 +234,51 @@ const Prizes = () => {
               High-Value Prizes
             </span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Scroll through our premium collection. All items are verified
-            collectibles with instant cash conversion.
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            Browse through our exclusive collection. Each prize is authenticated
+            and comes with a certificate of authenticity.
           </p>
         </motion.div>
 
-        {/* Marquee Container */}
+        {/* Carousel Container */}
         <div className="relative">
-          {/* Gradient Fades */}
-          <div className="absolute left-0 top-0 bottom-0 w-32 md:w-64 z-10"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-32 md:w-64 z-10"></div>
+          {/* Navigation Buttons */}
+          <button
+            onClick={prevSlide}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-6 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-r from-blue-800/80 to-blue-900/80 border border-blue-700/50 flex items-center justify-center text-white hover:text-yellow-400 hover:border-yellow-500/50 hover:shadow-lg hover:shadow-yellow-500/20 transition-all duration-300"
+            aria-label="Previous slide"
+          >
+            <FaChevronLeft className="w-4 h-4 md:w-5 md:h-5" />
+          </button>
 
-          {/* Marquee */}
-          <div className="overflow-hidden">
+          <button
+            onClick={nextSlide}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-6 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-r from-blue-800/80 to-blue-900/80 border border-blue-700/50 flex items-center justify-center text-white hover:text-yellow-400 hover:border-yellow-500/50 hover:shadow-lg hover:shadow-yellow-500/20 transition-all duration-300"
+            aria-label="Next slide"
+          >
+            <FaChevronRight className="w-4 h-4 md:w-5 md:h-5" />
+          </button>
+
+          {/* Carousel */}
+          <AnimatePresence mode="wait">
             <motion.div
-              className="flex gap-6 py-4"
-              animate={{ x: ["0%", "-50%"] }}
-              transition={{
-                ease: "linear",
-                duration: 60,
-                repeat: Infinity,
-                repeatType: "loop",
-              }}
+              key={currentIndex}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.3 }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-2"
             >
-              {marqueePrizes.map((prize, index) => (
-                <div
-                  key={`${prize.id}-${index}`}
-                  className="flex-shrink-0 w-90 md:w-96 group cursor-grab active:cursor-grabbing"
+              {visiblePrizes.map((prize) => (
+                <motion.div
+                  key={prize.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: 0.1 }}
+                  className="h-full"
                 >
                   {/* Prize Card */}
-                  <div className="h-full bg-gradient-to-br from-gray-800/50 to-gray-900/30 border border-gray-700/50 rounded-3xl p-6 backdrop-blur-sm hover:border-yellow-500/40 hover:shadow-2xl hover:shadow-yellow-500/10 transition-all duration-500 overflow-hidden group-hover:scale-[1.02]">
+                  <div className="h-full bg-gradient-to-br from-gray-800/50 to-gray-900/30 border border-gray-700/50 rounded-3xl p-6 backdrop-blur-sm hover:border-yellow-500/40 hover:shadow-2xl hover:shadow-yellow-500/10 transition-all duration-500 overflow-hidden hover:scale-[1.02]">
                     {/* Badge */}
                     <div className="absolute top-4 left-4 z-20">
                       <div className="flex items-center space-x-2">
@@ -280,7 +338,7 @@ const Prizes = () => {
                       <div className="text-xs text-gray-400 uppercase tracking-wider mb-2">
                         {prize.category}
                       </div>
-                      <h3 className="text-lg font-bold text-white mb-2 group-hover:text-yellow-400 transition-colors line-clamp-2">
+                      <h3 className="text-lg font-bold text-white mb-2 hover:text-yellow-400 transition-colors line-clamp-2">
                         {prize.title}
                       </h3>
                       <p className="text-sm text-gray-400 mb-3 line-clamp-2">
@@ -326,10 +384,35 @@ const Prizes = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </motion.div>
-          </div>
+          </AnimatePresence>
+        </div>
+
+        {/* Pagination Dots */}
+        <div className="flex justify-center items-center mt-8 space-x-3">
+          {Array.from({ length: maxIndex + 1 }).map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                index === currentIndex
+                  ? "w-8 bg-gradient-to-r from-yellow-400 to-yellow-600"
+                  : "bg-gray-700 hover:bg-gray-600"
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
+
+        {/* Slide Counter */}
+        <div className="text-center mt-4 text-gray-400 text-sm">
+          <span className="text-yellow-400 font-bold">
+            {currentIndex + 1} -{" "}
+            {Math.min(currentIndex + itemsPerView, totalItems)}
+          </span>{" "}
+          of {totalItems} items
         </div>
       </div>
     </section>
