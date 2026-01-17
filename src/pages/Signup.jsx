@@ -1,4 +1,3 @@
-// src/components/Signup.jsx
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import {
@@ -54,43 +53,70 @@ const Signup = ({ onNavigate }) => {
   const strength = passwordStrength(formData.password);
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      {/* Split Layout Container */}
-      <div className="flex flex-col lg:flex-row min-h-screen">
-        {/* Left Section - Brand & Value Proposition */}
-        <div className="lg:w-1/2 bg-gradient-to-br from-gray-900 via-black to-teal-900/20 p-8 md:p-12 lg:p-16 flex flex-col justify-center">
-          <div className="max-w-lg mx-auto lg:mx-0">
-            {/* Logo */}
-            <div className="flex items-center space-x-3 mb-2 lg:mb-12">
-              <h1 className="text-2xl font-bold text-white">Stratix</h1>
-            </div>
+    <div className="text-white overflow-hidden">
+      {/* Background Image with Overlay - Same as Login */}
+      <div className="absolute inset-0 z-0">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url('https://i.pinimg.com/1200x/11/e3/7d/11e37dbd7c0c06fe6659f35a3bf9d974.jpg')`,
+          }}
+        />
 
-            {/* Main Value Proposition */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <p className="text-base text-gray-300 italic">
-                Join thousands of successful traders who trust our AI to grow
-                their portfolios 24/7.
-              </p>
-            </motion.div>
-          </div>
+        {/* Yellow Semi-Transparent Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/30 via-yellow-600/20 to-black/80" />
+
+        {/* Pattern overlay */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(253,224,71,0.1),transparent_50%)]"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(59,130,246,0.1),transparent_50%)]"></div>
         </div>
+      </div>
 
-        {/* Right Section - Signup Form */}
-        <div className="lg:w-1/2 bg-black p-8 md:p-12 lg:p-16 flex items-center justify-center">
-          <div className="w-full max-w-md">
+      {/* Main Content */}
+      <div className="container mx-auto px-4 py-12 relative z-10">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Column - Brand & Value Proposition */}
+            {/* <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="space-y-8"
+            >
+              <div className="bg-gradient-to-br from-blue-800 to-blue-900 border border-yellow-500/20 rounded-2xl p-6">
+                <div className="flex items-center space-x-3 mb-4">
+                  <FaCheck className="text-yellow-400 text-xl" />
+                  <h3 className="text-lg font-bold">Secure Registration</h3>
+                </div>
+                <p className="text-gray-300 text-sm">
+                  Your information is protected with bank-level security. All
+                  data is encrypted and secure.
+                </p>
+              </div>
+            </motion.div> */}
+
+            {/* Right Column - Signup Form */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="bg-gradient-to-br from-blue-900 to-blue-950 border border-yellow-500/30 rounded-3xl p-8 md:p-10 backdrop-blur-sm"
             >
-              {/* Form Header */}
-              <div className="mb-8">
-                <h3 className="text-3xl font-bold mb-2">Create Account</h3>
-                <p className="text-gray-400">Join our AI trading community</p>
+              <div className="text-center mb-8">
+                <div className="inline-flex items-center space-x-2 bg-yellow-500/10 px-4 py-2 rounded-full mb-4">
+                  <FaChartLine className="text-yellow-400" />
+                  <span className="text-yellow-400 font-medium">
+                    Create Your Account
+                  </span>
+                </div>
+                <h2 className="text-3xl font-bold mb-2">
+                  Join Al-Nassr Giveaways
+                </h2>
+                <p className="text-gray-400">
+                  Start winning amazing prizes today
+                </p>
               </div>
 
               {/* Signup Form */}
@@ -103,11 +129,11 @@ const Signup = ({ onNavigate }) => {
                     </label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <FaUser className="text-gray-500" />
+                        <FaUser className="text-yellow-400/70" />
                       </div>
                       <input
                         type="text"
-                        className="w-full pl-10 pr-4 py-3 bg-gray-900 border border-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
+                        className="w-full pl-10 pr-4 py-3 bg-blue-900/30 border border-yellow-500/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all placeholder-gray-500"
                         placeholder="John"
                       />
                     </div>
@@ -119,11 +145,11 @@ const Signup = ({ onNavigate }) => {
                     </label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <FaUser className="text-gray-500" />
+                        <FaUser className="text-yellow-400/70" />
                       </div>
                       <input
                         type="text"
-                        className="w-full pl-10 pr-4 py-3 bg-gray-900 border border-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
+                        className="w-full pl-10 pr-4 py-3 bg-blue-900/30 border border-yellow-500/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all placeholder-gray-500"
                         placeholder="Doe"
                       />
                     </div>
@@ -137,11 +163,11 @@ const Signup = ({ onNavigate }) => {
                   </label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                      <FaEnvelope className="text-gray-500" />
+                      <FaEnvelope className="text-yellow-400/70" />
                     </div>
                     <input
                       type="email"
-                      className="w-full pl-10 pr-4 py-3 bg-gray-900 border border-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
+                      className="w-full pl-10 pr-4 py-3 bg-blue-900/30 border border-yellow-500/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all placeholder-gray-500"
                       placeholder="you@example.com"
                     />
                   </div>
@@ -154,22 +180,22 @@ const Signup = ({ onNavigate }) => {
                   </label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                      <FaLock className="text-gray-500" />
+                      <FaLock className="text-yellow-400/70" />
                     </div>
                     <input
                       type={showPassword ? "text" : "password"}
-                      className="w-full pl-10 pr-12 py-3 bg-gray-900 border border-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
+                      className="w-full pl-10 pr-12 py-3 bg-blue-900/30 border border-yellow-500/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all placeholder-gray-500"
                       placeholder="••••••••"
                     />
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                      className="absolute inset-y-0 right-0 pr-3 flex items-center hover:text-yellow-400 transition-colors"
                     >
                       {showPassword ? (
-                        <FaEyeSlash className="text-gray-500 hover:text-gray-400" />
+                        <FaEyeSlash className="text-gray-400" />
                       ) : (
-                        <FaEye className="text-gray-500 hover:text-gray-400" />
+                        <FaEye className="text-gray-400" />
                       )}
                     </button>
                   </div>
@@ -205,11 +231,11 @@ const Signup = ({ onNavigate }) => {
                   </label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                      <FaLock className="text-gray-500" />
+                      <FaLock className="text-yellow-400/70" />
                     </div>
                     <input
                       type={showConfirmPassword ? "text" : "password"}
-                      className="w-full pl-10 pr-12 py-3 bg-gray-900 border border-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
+                      className="w-full pl-10 pr-12 py-3 bg-blue-900/30 border border-yellow-500/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all placeholder-gray-500"
                       placeholder="••••••••"
                     />
                     <button
@@ -217,12 +243,12 @@ const Signup = ({ onNavigate }) => {
                       onClick={() =>
                         setShowConfirmPassword(!showConfirmPassword)
                       }
-                      className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                      className="absolute inset-y-0 right-0 pr-3 flex items-center hover:text-yellow-400 transition-colors"
                     >
                       {showConfirmPassword ? (
-                        <FaEyeSlash className="text-gray-500 hover:text-gray-400" />
+                        <FaEyeSlash className="text-gray-400" />
                       ) : (
-                        <FaEye className="text-gray-500 hover:text-gray-400" />
+                        <FaEye className="text-gray-400" />
                       )}
                     </button>
                   </div>
@@ -235,20 +261,20 @@ const Signup = ({ onNavigate }) => {
                     id="terms"
                     checked={agreedToTerms}
                     onChange={(e) => setAgreedToTerms(e.target.checked)}
-                    className="w-4 h-4 text-teal-600 bg-gray-800 border-gray-700 rounded focus:ring-teal-500 focus:ring-2 mt-1"
+                    className="w-4 h-4 text-yellow-500 bg-blue-900/30 border-yellow-500/50 rounded focus:ring-yellow-500 focus:ring-2 mt-1"
                   />
                   <label htmlFor="terms" className="ml-2 text-sm text-gray-300">
                     I agree to the{" "}
                     <button
                       type="button"
-                      className="text-teal-400 hover:text-teal-300 underline"
+                      className="text-yellow-400 hover:text-yellow-300 underline"
                     >
                       Terms and Conditions
                     </button>{" "}
                     and{" "}
                     <button
                       type="button"
-                      className="text-teal-400 hover:text-teal-300 underline"
+                      className="text-yellow-400 hover:text-yellow-300 underline"
                     >
                       Privacy Policy
                     </button>
@@ -260,7 +286,7 @@ const Signup = ({ onNavigate }) => {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   type="submit"
-                  className="w-full py-3 bg-gradient-to-r from-teal-500 to-teal-600 text-white font-semibold rounded-lg hover:from-teal-600 hover:to-teal-700 transition-all flex items-center justify-center space-x-2"
+                  className="w-full py-3 bg-gradient-to-r from-yellow-500 to-yellow-600 text-blue-900 font-semibold rounded-lg hover:from-yellow-600 hover:to-yellow-700 transition-all flex items-center justify-center space-x-2"
                 >
                   <span>Create Account</span>
                   <FaArrowRight />
@@ -268,12 +294,12 @@ const Signup = ({ onNavigate }) => {
               </form>
 
               {/* Login Link */}
-              <div className="mt-8 pt-6 border-t border-gray-800 text-center">
+              <div className="mt-8 pt-6 border-t border-yellow-500/20 text-center">
                 <p className="text-gray-400">
                   Already have an account?{" "}
                   <a
                     href="/login"
-                    className="text-teal-400 hover:text-teal-300 font-semibold transition-colors"
+                    className="text-yellow-400 hover:text-yellow-300 font-semibold transition-colors"
                   >
                     Sign in
                   </a>
