@@ -350,37 +350,11 @@ function App() {
                 </div>
               </div>
               <div className="ml-4 flex-1">
-                <div className="flex items-center justify-between">
-                  <p className="text-sm font-medium text-white">
-                    Live Activity
-                  </p>
-                  <span className="text-xl">{flag}</span>
-                </div>
                 <p className="mt-2 text-sm text-gray-300 leading-relaxed">
                   {message}
                 </p>
-                <div className="mt-3 flex items-center justify-between">
-                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-500/20 text-yellow-300 border border-yellow-500/30">
-                    Just now
-                  </span>
-                  <span className="text-xs text-gray-400">{country}</span>
-                </div>
               </div>
             </div>
-          </div>
-          <div className="flex">
-            <button
-              onClick={() => toast.dismiss(t.id)}
-              className="w-12 h-full border-l border-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-red-500/10 transition-colors rounded-r-2xl"
-            >
-              <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path
-                  fillRule="evenodd"
-                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 0 010-1.414z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </button>
           </div>
         </motion.div>
       ),
