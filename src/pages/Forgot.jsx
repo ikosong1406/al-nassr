@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import {
-  FaChartLine,
   FaEnvelope,
   FaLock,
   FaEye,
@@ -11,6 +10,7 @@ import {
   FaCheckCircle,
   FaKey,
   FaShieldAlt,
+  FaStar,
 } from "react-icons/fa";
 
 const ForgotPassword = ({ onNavigate }) => {
@@ -74,348 +74,354 @@ const ForgotPassword = ({ onNavigate }) => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      {/* Split Layout Container */}
-      <div className="flex flex-col lg:flex-row min-h-screen">
-        {/* Left Section - Brand & Value Proposition */}
-        <div className="lg:w-1/2 bg-gradient-to-br from-gray-900 via-black to-teal-900/20 p-8 md:p-12 lg:p-16 flex flex-col justify-center">
-          <div className="max-w-lg mx-auto lg:mx-0">
-            {/* Logo */}
-            <div className="flex items-center space-x-3 mb-4 lg:mb-12">
-              <h1 className="text-2xl font-bold text-white">Stratix</h1>
-            </div>
+    <div className="min-h-screen text-white overflow-hidden">
+      {/* Background Image with Overlay - Stretched to fill */}
+      <div className="fixed inset-0 z-0">
+        {/* Background Image with full coverage */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url('https://i.pinimg.com/1200x/11/e3/7d/11e37dbd7c0c06fe6659f35a3bf9d974.jpg')`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundAttachment: "fixed",
+          }}
+        />
 
-            {/* Main Value Proposition */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <p className="text-base text-gray-300 italic">
-                Let our AI analyze markets 24/7 and execute profitable trades
-                while you focus on what matters.
-              </p>
-            </motion.div>
-          </div>
+        {/* Yellow Semi-Transparent Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/30 via-yellow-600/20 to-black/80" />
+
+        {/* Pattern overlay */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(253,224,71,0.1),transparent_50%)]"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(59,130,246,0.1),transparent_50%)]"></div>
         </div>
+      </div>
 
-        {/* Right Section - Reset Form */}
-        <div className="lg:w-1/2 bg-black p-8 md:p-12 lg:p-16 flex items-center justify-center">
-          <div className="w-full max-w-md">
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              {/* Form Header */}
-              <div className="mb-8">
-                <h3 className="text-3xl font-bold mb-2">
-                  {resetSuccess
-                    ? "Password Reset Successful"
-                    : currentStep === 1
+      {/* Main Content */}
+      <div className="relative z-10 min-h-screen flex items-center justify-center p-4">
+        <div className="w-full max-w-md mx-auto">
+          {/* Forgot Password Form */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="bg-gradient-to-br from-blue-900/90 to-blue-950/90 border border-yellow-500/30 rounded-3xl p-8 md:p-10 backdrop-blur-sm shadow-2xl"
+          >
+            {/* Form Header */}
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center space-x-2 bg-yellow-500/10 px-4 py-2 rounded-full mb-4">
+                <FaStar className="text-yellow-400" />
+                <span className="text-yellow-400 font-medium">
+                  Password Recovery
+                </span>
+              </div>
+              <h2 className="text-3xl font-bold mb-2">
+                {resetSuccess
+                  ? "Password Reset Successful"
+                  : currentStep === 1
                     ? "Reset Your Password"
                     : currentStep === 2
-                    ? "Verify Your Email"
-                    : "Create New Password"}
-                </h3>
-                <p className="text-gray-400">
-                  {resetSuccess
-                    ? "Your password has been successfully reset"
-                    : currentStep === 1
+                      ? "Verify Your Email"
+                      : "Create New Password"}
+              </h2>
+              <p className="text-gray-300">
+                {resetSuccess
+                  ? "Your password has been successfully reset"
+                  : currentStep === 1
                     ? "Enter your email to receive a verification code"
                     : currentStep === 2
-                    ? "Enter the 6-digit code sent to your email"
-                    : "Enter your new password below"}
-                </p>
-              </div>
+                      ? "Enter the 6-digit code sent to your email"
+                      : "Enter your new password below"}
+              </p>
+            </div>
 
-              {/* Success Message */}
-              {resetSuccess && (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="mb-6 p-4 bg-teal-900/30 border border-teal-800 rounded-lg"
-                >
-                  <div className="flex items-center space-x-3">
-                    <FaCheckCircle className="text-teal-400 text-xl" />
-                    <div>
-                      <p className="text-teal-300 font-medium">
-                        Password Reset Complete!
-                      </p>
-                      <p className="text-teal-400/80 text-sm mt-1">
-                        You can now log in with your new password.
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-              )}
-
-              {/* Step 1: Enter Email */}
-              {currentStep === 1 && !resetSuccess && (
-                <form onSubmit={handleSendCode} className="space-y-6">
+            {/* Success Message */}
+            {resetSuccess && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="mb-6 p-4 bg-yellow-900/20 border border-yellow-800/30 rounded-xl"
+              >
+                <div className="flex items-center space-x-3">
+                  <FaCheckCircle className="text-yellow-400 text-xl" />
                   <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
-                      Email Address
-                    </label>
-                    <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <FaEnvelope className="text-gray-500" />
-                      </div>
-                      <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        className="w-full pl-10 pr-4 py-3 bg-gray-900 border border-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
-                        placeholder="you@example.com"
-                        required
-                      />
-                    </div>
-                    <p className="text-xs text-gray-500 mt-2">
-                      We'll send a verification code to this email
+                    <p className="text-yellow-300 font-medium">
+                      Password Reset Complete!
+                    </p>
+                    <p className="text-yellow-400/80 text-sm mt-1">
+                      You can now log in with your new password.
                     </p>
                   </div>
+                </div>
+              </motion.div>
+            )}
 
+            {/* Step 1: Enter Email */}
+            {currentStep === 1 && !resetSuccess && (
+              <form onSubmit={handleSendCode} className="space-y-6">
+                <div>
+                  <label className="block text-sm font-semibold text-gray-300 mb-2">
+                    Email Address
+                  </label>
+                  <div className="relative">
+                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <FaEnvelope className="text-yellow-400/70" />
+                    </div>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="w-full pl-10 pr-4 py-3 bg-blue-900/40 border border-yellow-500/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all placeholder-gray-400"
+                      placeholder="you@example.com"
+                      required
+                    />
+                  </div>
+                  <p className="text-xs text-gray-400 mt-2">
+                    We'll send a verification code to this email
+                  </p>
+                </div>
+
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  type="submit"
+                  disabled={isLoading}
+                  className="w-full py-4 bg-gradient-to-r from-yellow-500 to-yellow-600 text-blue-900 font-bold rounded-xl hover:from-yellow-600 hover:to-yellow-700 transition-all flex items-center justify-center space-x-3 shadow-lg shadow-yellow-500/20 disabled:opacity-70 disabled:cursor-not-allowed"
+                >
+                  {isLoading ? (
+                    <>
+                      <span>Sending...</span>
+                      <div className="w-4 h-4 border-2 border-blue-900 border-t-transparent rounded-full animate-spin" />
+                    </>
+                  ) : (
+                    <>
+                      <span className="text-lg">Send Verification Code</span>
+                      <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+                    </>
+                  )}
+                </motion.button>
+              </form>
+            )}
+
+            {/* Step 2: Enter Verification Code */}
+            {currentStep === 2 && !resetSuccess && (
+              <form onSubmit={handleVerifyCode} className="space-y-6">
+                <div className="mb-4 p-4 bg-yellow-900/10 rounded-xl border border-yellow-500/20">
+                  <div className="flex items-center space-x-3">
+                    <FaShieldAlt className="text-yellow-400" />
+                    <div>
+                      <p className="text-sm text-gray-300">
+                        Code sent to{" "}
+                        <span className="text-yellow-300">
+                          {formData.email}
+                        </span>
+                      </p>
+                      <p className="text-xs text-gray-400 mt-1">
+                        Check your inbox and spam folder
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold text-gray-300 mb-2">
+                    6-Digit Verification Code
+                  </label>
+                  <input
+                    type="text"
+                    name="verificationCode"
+                    value={formData.verificationCode}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 bg-blue-900/40 border border-yellow-500/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all text-center text-2xl tracking-widest placeholder-gray-400"
+                    placeholder="123456"
+                    maxLength="6"
+                    pattern="\d{6}"
+                    required
+                  />
+                  <div className="flex justify-between mt-2">
+                    <p className="text-xs text-gray-400">
+                      Enter the 6-digit code
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => setCurrentStep(1)}
+                      className="text-xs text-yellow-400 hover:text-yellow-300 transition-colors"
+                    >
+                      Change email
+                    </button>
+                  </div>
+                </div>
+
+                <div className="flex space-x-4">
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    type="button"
+                    onClick={() => setCurrentStep(1)}
+                    className="flex-1 py-3 bg-blue-900/40 border border-yellow-500/20 text-gray-300 font-semibold rounded-xl hover:bg-blue-800/40 hover:border-yellow-500/30 transition-all"
+                  >
+                    Back
+                  </motion.button>
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     type="submit"
                     disabled={isLoading}
-                    className="w-full py-3 bg-gradient-to-r from-teal-500 to-teal-600 text-white font-semibold rounded-lg hover:from-teal-600 hover:to-teal-700 transition-all flex items-center justify-center space-x-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                    className="flex-1 py-4 bg-gradient-to-r from-yellow-500 to-yellow-600 text-blue-900 font-bold rounded-xl hover:from-yellow-600 hover:to-yellow-700 transition-all flex items-center justify-center space-x-3 shadow-lg shadow-yellow-500/20 disabled:opacity-70 disabled:cursor-not-allowed"
                   >
                     {isLoading ? (
                       <>
-                        <span>Sending...</span>
-                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                        <span>Verifying...</span>
+                        <div className="w-4 h-4 border-2 border-blue-900 border-t-transparent rounded-full animate-spin" />
                       </>
                     ) : (
                       <>
-                        <span>Send Verification Code</span>
+                        <span>Verify Code</span>
                         <FaArrowRight />
                       </>
                     )}
                   </motion.button>
-                </form>
-              )}
+                </div>
+              </form>
+            )}
 
-              {/* Step 2: Enter Verification Code */}
-              {currentStep === 2 && !resetSuccess && (
-                <form onSubmit={handleVerifyCode} className="space-y-6">
-                  <div className="mb-4 p-4 bg-gray-900/50 rounded-lg border border-gray-800">
-                    <div className="flex items-center space-x-3">
-                      <FaShieldAlt className="text-teal-400" />
-                      <div>
-                        <p className="text-sm text-gray-300">
-                          Code sent to{" "}
-                          <span className="text-teal-300">
-                            {formData.email}
-                          </span>
-                        </p>
-                        <p className="text-xs text-gray-500 mt-1">
-                          Check your inbox and spam folder
-                        </p>
-                      </div>
+            {/* Step 3: Set New Password */}
+            {currentStep === 3 && !resetSuccess && (
+              <form onSubmit={handleResetPassword} className="space-y-6">
+                <div>
+                  <label className="block text-sm font-semibold text-gray-300 mb-2">
+                    New Password
+                  </label>
+                  <div className="relative">
+                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <FaLock className="text-yellow-400/70" />
                     </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
-                      6-Digit Verification Code
-                    </label>
                     <input
-                      type="text"
-                      name="verificationCode"
-                      value={formData.verificationCode}
+                      type={showNewPassword ? "text" : "password"}
+                      name="newPassword"
+                      value={formData.newPassword}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-gray-900 border border-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all text-center text-2xl tracking-widest"
-                      placeholder="123456"
-                      maxLength="6"
-                      pattern="\d{6}"
+                      className="w-full pl-10 pr-12 py-3 bg-blue-900/40 border border-yellow-500/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all placeholder-gray-400"
+                      placeholder="••••••••"
+                      minLength="8"
                       required
                     />
-                    <div className="flex justify-between mt-2">
-                      <p className="text-xs text-gray-500">
-                        Enter the 6-digit code
-                      </p>
-                      <button
-                        type="button"
-                        onClick={() => setCurrentStep(1)}
-                        className="text-xs text-teal-400 hover:text-teal-300 transition-colors"
-                      >
-                        Change email
-                      </button>
-                    </div>
-                  </div>
-
-                  <div className="flex space-x-4">
-                    <motion.button
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
+                    <button
                       type="button"
-                      onClick={() => setCurrentStep(1)}
-                      className="flex-1 py-3 bg-gray-800 text-gray-300 font-semibold rounded-lg hover:bg-gray-700 transition-all"
+                      onClick={() => setShowNewPassword(!showNewPassword)}
+                      className="absolute inset-y-0 right-0 pr-3 flex items-center hover:text-yellow-400 transition-colors"
                     >
-                      Back
-                    </motion.button>
-                    <motion.button
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      type="submit"
-                      disabled={isLoading}
-                      className="flex-1 py-3 bg-gradient-to-r from-teal-500 to-teal-600 text-white font-semibold rounded-lg hover:from-teal-600 hover:to-teal-700 transition-all flex items-center justify-center space-x-2 disabled:opacity-70 disabled:cursor-not-allowed"
-                    >
-                      {isLoading ? (
-                        <>
-                          <span>Verifying...</span>
-                          <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                        </>
+                      {showNewPassword ? (
+                        <FaEyeSlash className="text-gray-400 hover:text-yellow-400" />
                       ) : (
-                        <>
-                          <span>Verify Code</span>
-                          <FaArrowRight />
-                        </>
+                        <FaEye className="text-gray-400 hover:text-yellow-400" />
                       )}
-                    </motion.button>
+                    </button>
                   </div>
-                </form>
-              )}
-
-              {/* Step 3: Set New Password */}
-              {currentStep === 3 && !resetSuccess && (
-                <form onSubmit={handleResetPassword} className="space-y-6">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
-                      New Password
-                    </label>
-                    <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <FaLock className="text-gray-500" />
-                      </div>
-                      <input
-                        type={showNewPassword ? "text" : "password"}
-                        name="newPassword"
-                        value={formData.newPassword}
-                        onChange={handleChange}
-                        className="w-full pl-10 pr-12 py-3 bg-gray-900 border border-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
-                        placeholder="••••••••"
-                        minLength="8"
-                        required
-                      />
-                      <button
-                        type="button"
-                        onClick={() => setShowNewPassword(!showNewPassword)}
-                        className="absolute inset-y-0 right-0 pr-3 flex items-center"
-                      >
-                        {showNewPassword ? (
-                          <FaEyeSlash className="text-gray-500 hover:text-gray-400" />
-                        ) : (
-                          <FaEye className="text-gray-500 hover:text-gray-400" />
-                        )}
-                      </button>
-                    </div>
-                    <p className="text-xs text-gray-500 mt-2">
-                      Must be at least 8 characters with letters and numbers
-                    </p>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
-                      Confirm New Password
-                    </label>
-                    <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <FaKey className="text-gray-500" />
-                      </div>
-                      <input
-                        type={showConfirmPassword ? "text" : "password"}
-                        name="confirmPassword"
-                        value={formData.confirmPassword}
-                        onChange={handleChange}
-                        className="w-full pl-10 pr-12 py-3 bg-gray-900 border border-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
-                        placeholder="••••••••"
-                        minLength="8"
-                        required
-                      />
-                      <button
-                        type="button"
-                        onClick={() =>
-                          setShowConfirmPassword(!showConfirmPassword)
-                        }
-                        className="absolute inset-y-0 right-0 pr-3 flex items-center"
-                      >
-                        {showConfirmPassword ? (
-                          <FaEyeSlash className="text-gray-500 hover:text-gray-400" />
-                        ) : (
-                          <FaEye className="text-gray-500 hover:text-gray-400" />
-                        )}
-                      </button>
-                    </div>
-                    <p className="text-xs text-gray-500 mt-2">
-                      Both passwords must match
-                    </p>
-                  </div>
-
-                  <div className="flex space-x-4">
-                    <motion.button
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      type="button"
-                      onClick={() => setCurrentStep(2)}
-                      className="flex-1 py-3 bg-gray-800 text-gray-300 font-semibold rounded-lg hover:bg-gray-700 transition-all"
-                    >
-                      Back
-                    </motion.button>
-                    <motion.button
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      type="submit"
-                      disabled={
-                        isLoading ||
-                        formData.newPassword !== formData.confirmPassword ||
-                        formData.newPassword.length < 8
-                      }
-                      className="flex-1 py-3 bg-gradient-to-r from-teal-500 to-teal-600 text-white font-semibold rounded-lg hover:from-teal-600 hover:to-teal-700 transition-all flex items-center justify-center space-x-2 disabled:opacity-70 disabled:cursor-not-allowed"
-                    >
-                      {isLoading ? (
-                        <>
-                          <span>Resetting...</span>
-                          <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                        </>
-                      ) : (
-                        <>
-                          <span>Reset Password</span>
-                          <FaArrowRight />
-                        </>
-                      )}
-                    </motion.button>
-                  </div>
-                </form>
-              )}
-
-              {/* Navigation Links */}
-              {!resetSuccess && (
-                <div className="mt-8 pt-6 border-t border-gray-800 text-center">
-                  <p className="text-gray-400">
-                    Remember your password?{" "}
-                    <a
-                      href="/login"
-                      className="text-teal-400 hover:text-teal-300 font-semibold transition-colors"
-                    >
-                      Back to login
-                    </a>
+                  <p className="text-xs text-gray-400 mt-2">
+                    Must be at least 8 characters with letters and numbers
                   </p>
                 </div>
-              )}
 
-              {/* Security Note */}
-              <div className="mt-6 text-center">
-                <p className="text-xs text-gray-500">
-                  <FaShieldAlt className="inline mr-1" />
-                  Your data is secured with 256-bit SSL encryption
+                <div>
+                  <label className="block text-sm font-semibold text-gray-300 mb-2">
+                    Confirm New Password
+                  </label>
+                  <div className="relative">
+                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <FaKey className="text-yellow-400/70" />
+                    </div>
+                    <input
+                      type={showConfirmPassword ? "text" : "password"}
+                      name="confirmPassword"
+                      value={formData.confirmPassword}
+                      onChange={handleChange}
+                      className="w-full pl-10 pr-12 py-3 bg-blue-900/40 border border-yellow-500/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all placeholder-gray-400"
+                      placeholder="••••••••"
+                      minLength="8"
+                      required
+                    />
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setShowConfirmPassword(!showConfirmPassword)
+                      }
+                      className="absolute inset-y-0 right-0 pr-3 flex items-center hover:text-yellow-400 transition-colors"
+                    >
+                      {showConfirmPassword ? (
+                        <FaEyeSlash className="text-gray-400 hover:text-yellow-400" />
+                      ) : (
+                        <FaEye className="text-gray-400 hover:text-yellow-400" />
+                      )}
+                    </button>
+                  </div>
+                  <p className="text-xs text-gray-400 mt-2">
+                    Both passwords must match
+                  </p>
+                </div>
+
+                <div className="flex space-x-4">
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    type="button"
+                    onClick={() => setCurrentStep(2)}
+                    className="flex-1 py-3 bg-blue-900/40 border border-yellow-500/20 text-gray-300 font-semibold rounded-xl hover:bg-blue-800/40 hover:border-yellow-500/30 transition-all"
+                  >
+                    Back
+                  </motion.button>
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    type="submit"
+                    disabled={
+                      isLoading ||
+                      formData.newPassword !== formData.confirmPassword ||
+                      formData.newPassword.length < 8
+                    }
+                    className="flex-1 py-4 bg-gradient-to-r from-yellow-500 to-yellow-600 text-blue-900 font-bold rounded-xl hover:from-yellow-600 hover:to-yellow-700 transition-all flex items-center justify-center space-x-3 shadow-lg shadow-yellow-500/20 disabled:opacity-70 disabled:cursor-not-allowed"
+                  >
+                    {isLoading ? (
+                      <>
+                        <span>Resetting...</span>
+                        <div className="w-4 h-4 border-2 border-blue-900 border-t-transparent rounded-full animate-spin" />
+                      </>
+                    ) : (
+                      <>
+                        <span>Reset Password</span>
+                        <FaArrowRight />
+                      </>
+                    )}
+                  </motion.button>
+                </div>
+              </form>
+            )}
+
+            {/* Navigation Links */}
+            {!resetSuccess && (
+              <div className="mt-8 pt-6 border-t border-yellow-500/20 text-center">
+                <p className="text-gray-300">
+                  Remember your password?{" "}
+                  <a
+                    href="/login"
+                    className="text-yellow-400 hover:text-yellow-300 font-semibold transition-colors"
+                  >
+                    Back to login
+                  </a>
                 </p>
               </div>
-            </motion.div>
-          </div>
+            )}
+
+            {/* Security Note */}
+            <div className="mt-6 text-center">
+              <p className="text-xs text-gray-400">
+                <FaShieldAlt className="inline mr-1" />
+                Your data is secured with 256-bit SSL encryption
+              </p>
+            </div>
+          </motion.div>
         </div>
       </div>
     </div>

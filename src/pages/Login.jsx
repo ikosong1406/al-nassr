@@ -19,7 +19,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle login logic here
-    navigate("/dashboard");
+    navigate("/app");
   };
 
   return (
@@ -100,7 +100,7 @@ const Login = () => {
                     Password
                   </label>
                   <a
-                    href="/forgot-password"
+                    href="/forgot"
                     className="text-sm text-yellow-400 hover:text-yellow-300 transition-colors"
                   >
                     Forgot password?

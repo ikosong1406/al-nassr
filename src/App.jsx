@@ -11,7 +11,6 @@ import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import ForgotPassword from "./pages/Forgot";
-import LinkingAccount from "./pages/Linking";
 import TabNavigator from "./pages/Tab";
 import Home from "./pages/Home";
 import Bot from "./pages/Bot";
@@ -52,7 +51,6 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/forgot" element={<ForgotPassword />} />
-        <Route path="/linking" element={<LinkingAccount />} />
 
         {/* Protected Routes wrapped with TabNavigator */}
         <Route
