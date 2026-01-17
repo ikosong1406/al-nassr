@@ -209,7 +209,7 @@ const Prizes = () => {
               animate={{ x: ["0%", "-50%"] }}
               transition={{
                 ease: "linear",
-                duration: 10,
+                duration: 60,
                 repeat: Infinity,
                 repeatType: "loop",
               }}
