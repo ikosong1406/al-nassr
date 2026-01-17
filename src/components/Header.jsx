@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import {
-  FaBars,
-  FaTimes,
-  FaUserPlus,
-  FaSignInAlt,
-  FaFutbol,
-} from "react-icons/fa";
+import { FaBars, FaTimes, FaUserPlus, FaSignInAlt } from "react-icons/fa";
 import logo from "../assets/logo.png";
 
 const Header = () => {

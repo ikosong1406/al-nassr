@@ -115,17 +115,6 @@ const HowItWorks = () => {
                     </div>
                   </div>
 
-                  {/* Icon Container */}
-                  <div
-                    className={`w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br ${step.color}/20 border ${step.color.replace("from-", "border-").replace(" to-", "/30 border-").split(" ")[0]}/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
-                  >
-                    <div
-                      className={`text-3xl bg-gradient-to-br ${step.color} bg-clip-text text-transparent`}
-                    >
-                      {step.icon}
-                    </div>
-                  </div>
-
                   {/* Content */}
                   <div className="text-center">
                     <h3 className="text-xl font-bold mb-3 text-white group-hover:text-yellow-400 transition-colors">

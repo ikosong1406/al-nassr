@@ -89,7 +89,7 @@ const Hero = () => {
     return () => clearInterval(playerTimer);
   }, []);
 
-  const jackpotSAR = 10000000;
+  const jackpotSAR = 20000000;
   const jackpotUSD = (jackpotSAR * 0.27).toLocaleString();
   const currentPlayer = rotatingPlayers[currentPlayerIndex];
 
@@ -138,12 +138,12 @@ const Hero = () => {
                 {/* Player Name & Position - Inline flex */}
                 <div className="flex flex-col sm:flex-row sm:items-end gap-3 mb-4">
                   <div className="flex-1">
-                    <h1 className="text-3xl sm:text-4xl font-black text-white leading-tight">
+                    <h1 className="text-4xl sm:text-4xl font-black text-white leading-tight">
                       <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent">
                         {currentPlayer.name.split(" ")[0]}
                       </span>
                       <br />
-                      <span className="text-2xl sm:text-3xl">
+                      <span className="text-3xl sm:text-3xl">
                         {currentPlayer.name.split(" ").slice(1).join(" ")}
                       </span>
                     </h1>

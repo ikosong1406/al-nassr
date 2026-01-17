@@ -31,7 +31,7 @@ const TeamIdentity = () => {
   return (
     <section
       id="team"
-      className="relative py-12 bg-gradient-to-b from-blue-950 via-blue-900 to-blue-950 overflow-hidden"
+      className="relative py-10 bg-gradient-to-b from-blue-950 via-blue-900 to-blue-950 overflow-hidden"
     >
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-1/4 left-10 w-72 h-72 bg-yellow-500 rounded-full mix-blend-overlay filter blur-3xl"></div>
