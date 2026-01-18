@@ -38,7 +38,7 @@ const Login = () => {
         />
 
         {/* Yellow Semi-Transparent Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/30 via-yellow-600/20 to-black/80" />
+        <div className="absolute inset-0 bg-gradient-to-br from-yellow-300/30 via-yellow-600/20 to-black/80" />
 
         {/* Pattern overlay */}
         <div className="absolute inset-0 opacity-10">
@@ -59,8 +59,8 @@ const Login = () => {
           >
             <div className="text-center mb-8">
               <div className="inline-flex items-center space-x-2 bg-yellow-500/10 px-2 py-2 rounded-full mb-4">
-                <FaStar className="text-yellow-400" />
-                <span className="text-yellow-400 font-medium">
+                <FaStar className="text-yellow-300" />
+                <span className="text-yellow-300 font-medium">
                   Official Member Login
                 </span>
               </div>
@@ -78,12 +78,12 @@ const Login = () => {
                 </label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <FaEnvelope className="text-yellow-400/70" />
+                    <FaEnvelope className="text-yellow-300/70" />
                   </div>
                   <input
                     type="email"
                     required
-                    className="w-full pl-10 pr-4 py-3 bg-blue-900/40 border border-yellow-500/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all placeholder-gray-400"
+                    className="w-full pl-10 pr-4 py-3 bg-blue-900/40 border border-yellow-300/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:border-transparent transition-all placeholder-gray-400"
                     placeholder="Enter your email"
                     value={formData.email}
                     onChange={(e) =>
@@ -101,19 +101,19 @@ const Login = () => {
                   </label>
                   <a
                     href="/forgot"
-                    className="text-sm text-yellow-400 hover:text-yellow-300 transition-colors"
+                    className="text-sm text-yellow-300 hover:text-yellow-300 transition-colors"
                   >
                     Forgot password?
                   </a>
                 </div>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <FaLock className="text-yellow-400/70" />
+                    <FaLock className="text-yellow-300/70" />
                   </div>
                   <input
                     type={showPassword ? "text" : "password"}
                     required
-                    className="w-full pl-10 pr-12 py-3 bg-blue-900/40 border border-yellow-500/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all placeholder-gray-400"
+                    className="w-full pl-10 pr-12 py-3 bg-blue-900/40 border border-yellow-300/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:border-transparent transition-all placeholder-gray-400"
                     placeholder="Enter your password"
                     value={formData.password}
                     onChange={(e) =>
@@ -123,12 +123,12 @@ const Login = () => {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute inset-y-0 right-0 pr-3 flex items-center hover:text-yellow-400 transition-colors"
+                    className="absolute inset-y-0 right-0 pr-3 flex items-center hover:text-yellow-300 transition-colors"
                   >
                     {showPassword ? (
-                      <FaEyeSlash className="text-gray-400 hover:text-yellow-400" />
+                      <FaEyeSlash className="text-gray-400 hover:text-yellow-300" />
                     ) : (
-                      <FaEye className="text-gray-400 hover:text-yellow-400" />
+                      <FaEye className="text-gray-400 hover:text-yellow-300" />
                     )}
                   </button>
                 </div>
@@ -141,7 +141,7 @@ const Login = () => {
                   id="remember"
                   checked={rememberMe}
                   onChange={(e) => setRememberMe(e.target.checked)}
-                  className="w-4 h-4 text-yellow-500 bg-blue-900/40 border-yellow-500/50 rounded focus:ring-yellow-500 focus:ring-2"
+                  className="w-4 h-4 text-yellow-300 bg-blue-900/40 border-yellow-300/50 rounded focus:ring-yellow-300 focus:ring-2"
                 />
                 <label
                   htmlFor="remember"
@@ -156,7 +156,7 @@ const Login = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="w-full py-4 bg-gradient-to-r from-yellow-500 to-yellow-600 text-blue-900 font-bold rounded-xl hover:from-yellow-600 hover:to-yellow-700 transition-all flex items-center justify-center space-x-3 shadow-lg shadow-yellow-500/20"
+                className="w-full py-4 bg-gradient-to-r from-yellow-300 to-yellow-400 text-blue-900 font-bold rounded-xl transition-all flex items-center justify-center space-x-3 shadow-lg shadow-yellow-500/20"
               >
                 <span className="text-lg">Sign In</span>
                 <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
@@ -178,7 +178,7 @@ const Login = () => {
                   Don't have an account?{" "}
                   <a
                     href="/signup"
-                    className="text-yellow-400 hover:text-yellow-300 font-semibold transition-colors"
+                    className="text-yellow-300 hover:text-yellow-300 font-semibold transition-colors"
                   >
                     Join Giveaways Now
                   </a>

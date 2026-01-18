@@ -75,7 +75,7 @@ const Signup = ({ onNavigate }) => {
         />
 
         {/* Yellow Semi-Transparent Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/30 via-yellow-600/20 to-black/80" />
+        <div className="absolute inset-0 bg-gradient-to-br from-yellow-300/30 via-yellow-400/20 to-black/80" />
 
         {/* Pattern overlay */}
         <div className="absolute inset-0 opacity-10">
@@ -92,12 +92,12 @@ const Signup = ({ onNavigate }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="bg-gradient-to-br from-blue-900/90 to-blue-950/90 border border-yellow-500/30 rounded-3xl p-4 md:p-10 backdrop-blur-sm shadow-2xl"
+            className="bg-gradient-to-br from-blue-900/90 to-blue-950/90 border border-yellow-300/30 rounded-3xl p-4 md:p-10 backdrop-blur-sm shadow-2xl"
           >
             <div className="text-center mb-8">
               <div className="inline-flex items-center space-x-2 bg-yellow-500/10 px-4 py-2 rounded-full mb-4">
-                <FaChartLine className="text-yellow-400" />
-                <span className="text-yellow-400 font-medium">
+                <FaChartLine className="text-yellow-300" />
+                <span className="text-yellow-300 font-medium">
                   Create Your Account
                 </span>
               </div>
@@ -119,14 +119,14 @@ const Signup = ({ onNavigate }) => {
                   </label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                      <FaUser className="text-yellow-400/70" />
+                      <FaUser className="text-yellow-300/70" />
                     </div>
                     <input
                       type="text"
                       name="firstName"
                       value={formData.firstName}
                       onChange={handleChange}
-                      className="w-full pl-10 pr-4 py-3 bg-blue-900/40 border border-yellow-500/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all placeholder-gray-400"
+                      className="w-full pl-10 pr-4 py-3 bg-blue-900/40 border border-yellow-300/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:border-transparent transition-all placeholder-gray-400"
                       placeholder="John"
                     />
                   </div>
@@ -138,14 +138,14 @@ const Signup = ({ onNavigate }) => {
                   </label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                      <FaUser className="text-yellow-400/70" />
+                      <FaUser className="text-yellow-300/70" />
                     </div>
                     <input
                       type="text"
                       name="lastName"
                       value={formData.lastName}
                       onChange={handleChange}
-                      className="w-full pl-10 pr-4 py-3 bg-blue-900/40 border border-yellow-500/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all placeholder-gray-400"
+                      className="w-full pl-10 pr-4 py-3 bg-blue-900/40 border border-yellow-300/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:border-transparent transition-all placeholder-gray-400"
                       placeholder="Doe"
                     />
                   </div>
@@ -159,14 +159,14 @@ const Signup = ({ onNavigate }) => {
                 </label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <FaEnvelope className="text-yellow-400/70" />
+                    <FaEnvelope className="text-yellow-300/70" />
                   </div>
                   <input
                     type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full pl-10 pr-4 py-3 bg-blue-900/40 border border-yellow-500/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all placeholder-gray-400"
+                    className="w-full pl-10 pr-4 py-3 bg-blue-900/40 border border-yellow-300/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:border-transparent transition-all placeholder-gray-400"
                     placeholder="you@example.com"
                   />
                 </div>
@@ -179,25 +179,25 @@ const Signup = ({ onNavigate }) => {
                 </label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <FaLock className="text-yellow-400/70" />
+                    <FaLock className="text-yellow-300/70" />
                   </div>
                   <input
                     type={showPassword ? "text" : "password"}
                     name="password"
                     value={formData.password}
                     onChange={handleChange}
-                    className="w-full pl-10 pr-12 py-3 bg-blue-900/40 border border-yellow-500/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all placeholder-gray-400"
+                    className="w-full pl-10 pr-12 py-3 bg-blue-900/40 border border-yellow-300/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:border-transparent transition-all placeholder-gray-400"
                     placeholder="••••••••"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute inset-y-0 right-0 pr-3 flex items-center hover:text-yellow-400 transition-colors"
+                    className="absolute inset-y-0 right-0 pr-3 flex items-center hover:text-yellow-300 transition-colors"
                   >
                     {showPassword ? (
-                      <FaEyeSlash className="text-gray-400 hover:text-yellow-400" />
+                      <FaEyeSlash className="text-gray-400 hover:text-yellow-300" />
                     ) : (
-                      <FaEye className="text-gray-400 hover:text-yellow-400" />
+                      <FaEye className="text-gray-400 hover:text-yellow-300" />
                     )}
                   </button>
                 </div>
@@ -233,25 +233,25 @@ const Signup = ({ onNavigate }) => {
                 </label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <FaLock className="text-yellow-400/70" />
+                    <FaLock className="text-yellow-300/70" />
                   </div>
                   <input
                     type={showConfirmPassword ? "text" : "password"}
                     name="confirmPassword"
                     value={formData.confirmPassword}
                     onChange={handleChange}
-                    className="w-full pl-10 pr-12 py-3 bg-blue-900/40 border border-yellow-500/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all placeholder-gray-400"
+                    className="w-full pl-10 pr-12 py-3 bg-blue-900/40 border border-yellow-300/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:border-transparent transition-all placeholder-gray-400"
                     placeholder="••••••••"
                   />
                   <button
                     type="button"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    className="absolute inset-y-0 right-0 pr-3 flex items-center hover:text-yellow-400 transition-colors"
+                    className="absolute inset-y-0 right-0 pr-3 flex items-center hover:text-yellow-300 transition-colors"
                   >
                     {showConfirmPassword ? (
-                      <FaEyeSlash className="text-gray-400 hover:text-yellow-400" />
+                      <FaEyeSlash className="text-gray-400 hover:text-yellow-300" />
                     ) : (
-                      <FaEye className="text-gray-400 hover:text-yellow-400" />
+                      <FaEye className="text-gray-400 hover:text-yellow-300" />
                     )}
                   </button>
                 </div>
@@ -264,20 +264,20 @@ const Signup = ({ onNavigate }) => {
                   id="terms"
                   checked={agreedToTerms}
                   onChange={(e) => setAgreedToTerms(e.target.checked)}
-                  className="w-4 h-4 text-yellow-500 bg-blue-900/40 border-yellow-500/50 rounded focus:ring-yellow-500 focus:ring-2 mt-1"
+                  className="w-4 h-4 text-yellow-300 bg-blue-900/40 border-yellow-500/50 rounded focus:ring-yellow-300 focus:ring-2 mt-1"
                 />
                 <label htmlFor="terms" className="ml-2 text-sm text-gray-300">
                   I agree to the{" "}
                   <button
                     type="button"
-                    className="text-yellow-400 hover:text-yellow-300 underline"
+                    className="text-yellow-300 hover:text-yellow-300 underline"
                   >
                     Terms and Conditions
                   </button>{" "}
                   and{" "}
                   <button
                     type="button"
-                    className="text-yellow-400 hover:text-yellow-300 underline"
+                    className="text-yellow-300 hover:text-yellow-300 underline"
                   >
                     Privacy Policy
                   </button>
@@ -289,7 +289,7 @@ const Signup = ({ onNavigate }) => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="w-full py-4 bg-gradient-to-r from-yellow-500 to-yellow-600 text-blue-900 font-bold rounded-xl hover:from-yellow-600 hover:to-yellow-700 transition-all flex items-center justify-center space-x-3 shadow-lg shadow-yellow-500/20"
+                className="w-full py-4 bg-gradient-to-r from-yellow-300 to-yellow-400 text-blue-900 font-bold rounded-xl transition-all flex items-center justify-center space-x-3 shadow-lg shadow-yellow-500/20"
               >
                 <span className="text-lg">Create Account</span>
                 <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
@@ -302,7 +302,7 @@ const Signup = ({ onNavigate }) => {
                 Already have an account?{" "}
                 <a
                   href="/login"
-                  className="text-yellow-400 hover:text-yellow-300 font-semibold transition-colors"
+                  className="text-yellow-300 hover:text-yellow-300 font-semibold transition-colors"
                 >
                   Sign in
                 </a>
