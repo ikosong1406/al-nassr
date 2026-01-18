@@ -85,14 +85,14 @@ const Signup = ({ onNavigate }) => {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 min-h-screen flex items-center justify-center p-4">
+      <div className="relative z-10 min-h-screen flex items-center justify-center p-2">
         <div className="w-full max-w-md mx-auto">
           {/* Signup Form */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="bg-gradient-to-br from-blue-900/90 to-blue-950/90 border border-yellow-500/30 rounded-3xl p-8 md:p-10 backdrop-blur-sm shadow-2xl"
+            className="bg-gradient-to-br from-blue-900/90 to-blue-950/90 border border-yellow-500/30 rounded-3xl p-4 md:p-10 backdrop-blur-sm shadow-2xl"
           >
             <div className="text-center mb-8">
               <div className="inline-flex items-center space-x-2 bg-yellow-500/10 px-4 py-2 rounded-full mb-4">
