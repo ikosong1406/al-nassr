@@ -180,13 +180,13 @@ const Profile = () => {
                     Wallet Balance
                   </h2>
                 </div>
-                <div className="p-3 bg-gradient-to-br from-yellow-500/20 to-yellow-600/10 rounded-xl border border-yellow-500/20">
-                  <FaWallet className="text-yellow-400 text-xl" />
+                <div className="p-3 bg-gradient-to-br from-yellow-300/20 to-yellow-400/10 rounded-xl border border-yellow-500/20">
+                  <FaWallet className="text-yellow-300 text-xl" />
                 </div>
               </div>
 
               <div className="mb-8">
-                <div className="text-3xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent mb-2">
+                <div className="text-3xl font-bold bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent mb-2">
                   {formatCurrency(availableBalance)}
                 </div>
                 <div className="text-gray-400">
@@ -200,7 +200,7 @@ const Profile = () => {
 
               <button
                 onClick={() => setShowWithdrawModal(true)}
-                className="w-full py-4 bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 rounded-xl font-bold text-gray-900 transition-all duration-300 flex items-center justify-center space-x-3 shadow-lg shadow-yellow-500/20"
+                className="w-full py-4 bg-gradient-to-r from-yellow-300 to-yellow-400 rounded-xl font-bold text-gray-900 transition-all duration-300 flex items-center justify-center space-x-3 shadow-lg shadow-yellow-500/20"
               >
                 <FaArrowDown />
                 <span>Withdraw Funds</span>
@@ -241,7 +241,7 @@ const Profile = () => {
                   >
                     {card.isDefault && (
                       <div className="absolute top-4 right-4">
-                        <span className="px-3 py-1 bg-gradient-to-r from-yellow-600 to-yellow-700 text-xs font-bold rounded-full flex items-center">
+                        <span className="px-3 py-1 bg-gradient-to-r from-yellow-400 to-yellow-500 text-xs font-bold rounded-full flex items-center">
                           <FaCheckCircle className="mr-1" /> Default
                         </span>
                       </div>
@@ -310,17 +310,6 @@ const Profile = () => {
 
               <div className="space-y-4">
                 <div>
-                  <div className="text-gray-400 text-sm">Account Tier</div>
-                  <div className="flex items-center space-x-2 mt-1">
-                    <div className="px-3 py-1 bg-gradient-to-r from-yellow-600/30 to-yellow-700/20 rounded-lg border border-yellow-500/30">
-                      <span className="text-yellow-400 font-bold">
-                        {userData.accountTier}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                <div>
                   <div className="text-gray-400 text-sm">Member Since</div>
                   <div className="text-white font-medium">
                     {userData.memberSince}
@@ -369,7 +358,7 @@ const Profile = () => {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-3">
                     <div className="p-2 bg-gradient-to-br from-yellow-500/20 to-yellow-600/10 rounded-lg">
-                      <FaArrowDown className="text-yellow-400" />
+                      <FaArrowDown className="text-yellow-300" />
                     </div>
                     <div>
                       <h2 className="text-xl font-bold text-white">
@@ -395,7 +384,7 @@ const Profile = () => {
                 <div className="mb-6 p-4 bg-gradient-to-r from-gray-800/50 to-gray-900/30 rounded-xl border border-gray-700/30">
                   <div className="flex items-center justify-between mb-2">
                     <div className="text-gray-400 text-sm">Withdrawing to</div>
-                    <div className="text-xs text-yellow-400 font-semibold">
+                    <div className="text-xs text-yellow-300 font-semibold">
                       Default
                     </div>
                   </div>
@@ -425,7 +414,7 @@ const Profile = () => {
                       value={withdrawAmount}
                       onChange={(e) => setWithdrawAmount(e.target.value)}
                       placeholder="0.00"
-                      className="w-full p-4 bg-gray-900/50 border border-gray-700/50 rounded-xl text-white text-2xl font-bold placeholder-gray-600 focus:outline-none focus:border-yellow-500/50 focus:ring-2 focus:ring-yellow-500/20 transition-all"
+                      className="w-full p-4 bg-gray-900/50 border border-gray-700/50 rounded-xl text-white text-2xl font-bold placeholder-gray-600 focus:outline-none focus:border-yellow-300/50 focus:ring-2 focus:ring-yellow-300/20 transition-all"
                       min="1"
                       max={availableBalance}
                       step="0.01"
@@ -440,7 +429,7 @@ const Profile = () => {
                       onClick={() =>
                         setWithdrawAmount(availableBalance.toString())
                       }
-                      className="text-yellow-400 hover:text-yellow-300 transition-colors"
+                      className="text-yellow-300 hover:text-yellow-300 transition-colors"
                     >
                       Use Max
                     </button>
@@ -477,7 +466,7 @@ const Profile = () => {
                       parseFloat(withdrawAmount) <= 0 ||
                       parseFloat(withdrawAmount) > availableBalance
                     }
-                    className="flex-1 py-3 bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 rounded-xl font-bold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-yellow-500/20"
+                    className="flex-1 py-3 bg-gradient-to-r from-yellow-300 to-yellow-400 hover:to-yellow-700 rounded-xl font-bold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-yellow-500/20"
                   >
                     Confirm Withdrawal
                   </button>
