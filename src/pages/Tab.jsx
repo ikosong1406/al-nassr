@@ -122,7 +122,7 @@ const TabNavigator = () => {
                   }}
                   className={`relative flex items-center justify-center w-14 h-14 rounded-full transition-all duration-300 ${
                     isActive
-                      ? "bg-gradient-to-br from-yellow-400 to-yellow-600 shadow-xl shadow-yellow-500/40"
+                      ? "bg-gradient-to-br from-yellow-300 to-yellow-400 shadow-xl shadow-yellow-500/40"
                       : "bg-blue-800/50"
                   }`}
                 >
