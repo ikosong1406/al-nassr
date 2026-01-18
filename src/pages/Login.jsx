@@ -180,7 +180,7 @@ const Login = () => {
                     href="/signup"
                     className="text-yellow-300 hover:text-yellow-300 font-semibold transition-colors"
                   >
-                    Join Giveaways Now
+                    Join Now
                   </a>
                 </p>
               </div>
