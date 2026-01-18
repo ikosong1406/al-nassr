@@ -134,7 +134,7 @@ const TabNavigator = () => {
                   {isActive && (
                     <motion.div
                       layoutId="mobile-tab-indicator"
-                      className="absolute -bottom-2 w-6 h-1 bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-full"
+                      className="absolute -bottom-2 w-6 h-1 bg-gradient-to-r from-yellow-300 to-yellow-400 rounded-full"
                     />
                   )}
                 </motion.div>
