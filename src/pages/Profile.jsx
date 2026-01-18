@@ -1,4 +1,4 @@
-const History = () => (
+const Profile = () => (
   <div
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
@@ -211,4 +211,4 @@ const History = () => (
   </div>
 );
 
-export default History;
+export default Profile;

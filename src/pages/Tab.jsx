@@ -12,8 +12,8 @@ const TabNavigator = () => {
 
   const tabs = [
     { id: "/app/home", label: "Fireside", icon: FaFire },
-    { id: "/app/bot", label: "Giveaways", icon: FaGifts },
-    { id: "/app/history", label: "Profile", icon: FaUser },
+    { id: "/app/gifts", label: "Gifts", icon: FaGifts },
+    { id: "/app/profile", label: "Profile", icon: FaUser },
   ];
 
   // Update active tab when route changes

@@ -13,8 +13,8 @@ import Signup from "./pages/Signup";
 import ForgotPassword from "./pages/Forgot";
 import TabNavigator from "./pages/Tab";
 import Home from "./pages/Home";
-import Bot from "./pages/Bot";
-import History from "./pages/History";
+import Gifts from "./pages/Gifts";
+import Profile from "./pages/Profile";
 
 // Protected Route Wrapper
 const ProtectedRoute = ({ children }) => {
@@ -62,8 +62,8 @@ function App() {
           }
         >
           <Route path="home" element={<Home />} />
-          <Route path="bot" element={<Bot />} />
-          <Route path="history" element={<History />} />
+          <Route path="gifts" element={<Gifts />} />
+          <Route path="profile" element={<Profile />} />
           <Route index element={<Navigate to="/app/home" replace />} />
         </Route>
 
