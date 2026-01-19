@@ -174,8 +174,8 @@ const prizes = [
       "The most powerful Cadillac ever built, featuring a supercharged 6.2L V-8 with 682 horsepower, a 55-inch curved OLED display, and Super Cruise hands-free driving technology[citation:2].",
     convertible: false,
     color: "from-gray-900 via-slate-800 to-slate-950",
-    rarity: "Supercharged Flagship",
-    badge: "American Super-SUV",
+    rarity: "Super Flagship",
+    badge: "Super-SUV",
     features: [
       "682 HP Supercharged V8",
       "AKG 42-Speaker Studio Audio",
@@ -197,7 +197,7 @@ const prizes = [
       "A 2025 Grand Prize M3 featuring the Competition package and xDrive all-wheel drive for ultimate performance and precision, finished in exclusive Individual Ruby Star Neo paint[citation:7].",
     convertible: false,
     color: "from-rose-800 via-red-700 to-ruby-900",
-    rarity: "Competition Grand Prize",
+    rarity: "Sports Sedan Elite",
     badge: "///M Power",
     features: [
       "M Carbon Bucket Seats",
@@ -220,7 +220,7 @@ const prizes = [
       "A no-expense-spared, purpose-built icon. This '69 Camaro is engineered to modern supercar standards with a race-built twin-turbo LSX V8 producing an estimated 1,300 horsepower[citation:10].",
     convertible: false,
     color: "from-gray-700 via-gray-600 to-slate-500",
-    rarity: "SEMA Project Masterpiece",
+    rarity: "SEMA Masterpiece",
     badge: "Restomod Legend",
     features: [
       "Forged 1,300 HP LME LSX Engine",
