@@ -159,7 +159,7 @@ const TabNavigator = () => {
               <img src={logo} alt="Al-Nassr Logo" />
             </div>
             <div>
-              <h1 className="text-2xl font-black bg-yellow-300 bg-clip-text text-transparent">
+              <h1 className="text-xl font-black bg-yellow-300 bg-clip-text text-transparent">
                 Al-Nassr
               </h1>
             </div>
