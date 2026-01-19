@@ -693,21 +693,21 @@ const amountRanges = {
   USD: [1000, 5000, 10000, 25000, 50000, 100000, 250000, 500000],
   EUR: [1000, 5000, 10000, 25000, 50000, 100000, 250000, 500000],
   GBP: [1000, 5000, 10000, 25000, 50000, 100000, 250000, 500000],
-  
+
   // Major currencies with significant value
   JPY: [500000, 1000000, 2000000, 5000000, 10000000, 20000000, 50000000],
   CNY: [5000, 10000, 50000, 100000, 500000, 1000000, 2000000, 5000000],
   KRW: [5000000, 10000000, 50000000, 100000000, 200000000, 500000000],
-  
+
   // Emerging market currencies
   BRL: [5000, 10000, 25000, 50000, 100000, 250000, 500000, 1000000],
   INR: [50000, 100000, 250000, 500000, 1000000, 2500000, 5000000],
-  
+
   // Regional currencies
   EGP: [50000, 100000, 250000, 500000, 1000000, 2500000, 5000000, 10000000],
   MAD: [50000, 100000, 250000, 500000, 1000000, 2500000, 5000000],
   MXN: [50000, 100000, 250000, 500000, 1000000, 2500000, 5000000],
-  ARS: [500000, 1000000, 5000000, 10000000, 50000000, 100000000, 500000000]
+  ARS: [500000, 1000000, 5000000, 10000000, 50000000, 100000000, 500000000],
 };
 
 // Gift items for won transactions
@@ -719,27 +719,8 @@ const gifts = [
   "Al-Nassr Gold Edition Memorabilia Chest",
   "Cristiano Ronaldo Signed Career Milestone Frame",
   "Apple Ultra Tech Vault",
-  "Bang & Olufsen Home Audio Vault",
-  "Leica Master Photography Vault",
-  "Luxury Driving Experience & Gear Vault",
-  "Premium E-Bike / Performance Scooter Vault",
-  "VIP Match Travel Asset Package",
   "Five-Star Hospitality Credit Vault",
   "Luxury Fashion Trunk (Louis Vuitton / Dior / Hermès)",
-  "Contemporary Art & Football Culture Vault",
-  "Professional Home Gym Vault (Technogym / Peloton Pro)",
-  "Football Performance Analysis Vault",
-  "Professional Content Creator Studio Vault",
-  "Broadcast-Grade Podcast & Streaming Vault",
-  "Italian Designer Furniture Vault",
-  "Smart Luxury Home Office Vault",
-  "High-End Motorcycle Vault (Ducati / BMW M)",
-  "Luxury Car Customization Credit Vault",
-  "Elite Football Education Vault",
-  "Executive Education & Business Accelerator Vault",
-  "Luxury Cruise Experience Asset Vault",
-  "Formula 1 VIP Weekend Asset Package",
-  "Limited Edition Football Art Vault",
   "Luxury Timepiece Customization Vault",
   "Global Football Memorabilia Mega-Chest",
 ];
