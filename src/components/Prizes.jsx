@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  FaCheck,
   FaStar,
   FaFire,
-  FaGift,
   FaCrown,
   FaDollarSign,
   FaChevronLeft,
@@ -12,147 +10,228 @@ import {
 } from "react-icons/fa";
 
 const prizes = [
+  // First 18 items from previous update
   {
     id: 1,
-    title: "Cristiano Ronaldo Match-Worn Jersey",
-    category: "Match Memorabilia",
-    marketValueSAR: "120,000 SAR",
-    marketValueUSD: "$32,400",
+    title: "Omega Speedmaster / Seamaster Watch Vault",
+    category: "Luxury Timepieces",
+    marketValueSAR: "350,000 SAR",
+    marketValueUSD: "$93,500",
     description:
-      "Official home jersey worn by CR7 during 2023 Champions League match.",
+      "Curated collection of Omega's finest Speedmaster & Seamaster professional timepieces with certification.",
     convertible: true,
-    color: "from-yellow-400 via-yellow-500 to-amber-600",
-    rarity: "Ultra Rare",
-    badge: "Iconic",
-    features: ["Match Authenticated", "Player Signed", "Framing Included"],
+    color: "from-slate-800 via-gray-700 to-gray-900",
+    rarity: "Ultra Exclusive",
+    badge: "Swiss Master",
+    features: ["Multiple Models", "Full Certification", "Display Cases"],
     rating: 5,
     isPopular: true,
-    collectorGrade: "A++",
+    collectorGrade: "A+++",
     imageUrl:
-      "https://i.pinimg.com/736x/ca/87/10/ca8710a8ba6bdf46d662a1f4d20a0a36.jpg",
+      "https://i.pinimg.com/1200x/1b/40/cf/1b40cf113206cd1315d9e521d69c8f0c.jpg",
   },
   {
     id: 2,
-    title: "Al-Nassr 2024 Elite Kit Collection",
-    category: "Team Merchandise",
-    marketValueSAR: "30,000 SAR",
-    marketValueUSD: "$8,100",
-    description: "Complete elite kit set for entire 2024 squad.",
+    title: "Rolex Professional Series Watch Vault",
+    category: "Luxury Timepieces",
+    marketValueSAR: "1,200,000 SAR",
+    marketValueUSD: "$320,000",
+    description:
+      "Complete Rolex Professional Series collection including Daytona, Submariner, GMT-Master II.",
     convertible: true,
-    color: "from-blue-500 via-blue-600 to-blue-800",
-    rarity: "Limited Edition",
-    badge: "Complete Set",
-    features: ["Full Squad Set", "Official Match Spec", "Limited to 50"],
-    rating: 4,
+    color: "from-green-600 via-emerald-700 to-green-900",
+    rarity: "Museum Grade",
+    badge: "Rolex Collection",
+    features: [
+      "Professional Series Set",
+      "Rolex Certification",
+      "Investment Grade",
+    ],
+    rating: 5,
     isNew: true,
-    collectorGrade: "A+",
+    collectorGrade: "A++++",
     imageUrl:
-      "https://i.pinimg.com/1200x/3a/45/35/3a45357b4782c114fb8e0180a8cdd130.jpg",
+      "https://i.pinimg.com/1200x/1b/28/96/1b28966ac0175731c976cc7c88475e2d.jpg",
   },
   {
     id: 3,
-    title: "CR7 Match-Worn Superfly Boots",
-    category: "Player Equipment",
-    marketValueSAR: "60,000 SAR",
-    marketValueUSD: "$16,200",
-    description: "Nike Mercurial boots worn by Ronaldo during record match.",
+    title: "Cartier / Bulgari High-Jewelry Set",
+    category: "Luxury Jewelry",
+    marketValueSAR: "2,500,000 SAR",
+    marketValueUSD: "$667,000",
+    description:
+      "Exquisite high-jewelry collection featuring diamonds, emeralds, and rare gemstones from premier maisons.",
     convertible: true,
-    color: "from-purple-500 via-purple-600 to-pink-600",
-    rarity: "Extremely Rare",
-    badge: "Match Used",
-    features: ["Match Worn", "Player Signed", "Box Included"],
+    color: "from-pink-500 via-rose-600 to-red-600",
+    rarity: "Ultra Rare",
+    badge: "Haute Joaillerie",
+    features: ["GIA Certified", "Designer Pieces", "Secure Vault"],
     rating: 5,
     isPopular: true,
-    collectorGrade: "A++",
+    collectorGrade: "A++++",
     imageUrl:
-      "https://i.pinimg.com/736x/82/15/27/82152703ac94c194b964a4bd47c25a88.jpg",
+      "https://i.pinimg.com/1200x/bf/73/d0/bf73d073d82387b50a0befd3fb31d9a8.jpg",
   },
   {
     id: 4,
-    title: "Signed Golden Ball Trophy Replica",
-    category: "Awards & Trophies",
-    marketValueSAR: "95,000 SAR",
-    marketValueUSD: "$25,650",
-    description: "24K gold-plated Ballon d'Or replica signed by 5 legends.",
+    title: "Signed Match-Worn Double Jersey Vault",
+    category: "Football Memorabilia",
+    marketValueSAR: "450,000 SAR",
+    marketValueUSD: "$120,000",
+    description:
+      "Authentic match-worn jerseys from legendary encounters, signed and preserved in museum-quality display.",
     convertible: true,
-    color: "from-amber-400 via-yellow-500 to-yellow-600",
-    rarity: "Museum Grade",
-    badge: "Golden",
-    features: ["24K Gold Plated", "5 Signatures", "Display Case"],
+    color: "from-blue-600 via-indigo-700 to-purple-800",
+    rarity: "Legendary Matches",
+    badge: "Historic",
+    features: ["Multiple Legends", "Match Documentation", "Conservation Grade"],
     rating: 5,
     collectorGrade: "A+++",
     imageUrl:
-      "https://i.pinimg.com/736x/7e/33/a8/7e33a899d28b563f75a687be7637567c.jpg",
+      "https://i.pinimg.com/736x/aa/17/5b/aa175bab13eb2070bc62df354172f98a.jpg",
   },
   {
     id: 5,
-    title: "VIP Season Executive Box",
-    category: "Experience",
-    marketValueSAR: "200,000 SAR",
-    marketValueUSD: "$54,000",
-    description: "Executive box for 10 people for entire season.",
+    title: "Cristiano Ronaldo Signed Career Milestone Frame",
+    category: "Legend Memorabilia",
+    marketValueSAR: "850,000 SAR",
+    marketValueUSD: "$227,000",
+    description:
+      "Chronological display of CR7's career milestones with authenticated signatures from each era.",
     convertible: true,
-    color: "from-emerald-500 via-teal-600 to-cyan-600",
-    rarity: "Exclusive",
-    badge: "VIP",
-    features: ["10 Seats", "Full Catering", "Parking Pass"],
+    color: "from-red-600 via-red-700 to-rose-900",
+    rarity: "Career Spanning",
+    badge: "CR7 Legacy",
+    features: ["Career Timeline", "Multiple Signatures", "Museum Display"],
     rating: 5,
-    isPopular: true,
-    collectorGrade: "A++",
+    isNew: true,
+    collectorGrade: "A++++",
     imageUrl:
-      "https://i.pinimg.com/736x/c9/4c/44/c94c448ca991dc58a94c459cf1961a12.jpg",
+      "https://i.pinimg.com/736x/bb/12/89/bb1289ca8b5e7c55e722afd68020f128.jpg",
   },
   {
     id: 6,
-    title: "Al-Nassr Legends Signed Ball",
-    category: "Collectibles",
-    marketValueSAR: "20,000 SAR",
-    marketValueUSD: "$5,400",
-    description: "Official match ball signed by entire championship squad.",
+    title: "Apple Ultra Tech Vault",
+    category: "Premium Technology",
+    marketValueSAR: "180,000 SAR",
+    marketValueUSD: "$48,000",
+    description:
+      "Complete Apple ecosystem with Vision Pro, Mac Studio, and custom professional configurations.",
     convertible: true,
-    color: "from-red-500 via-rose-600 to-pink-600",
-    rarity: "Limited",
-    badge: "Squad Signed",
-    features: ["Full Squad", "Match Ball", "Display Stand"],
+    color: "from-gray-700 via-gray-800 to-black",
+    rarity: "Pro Configuration",
+    badge: "Apple Ultimate",
+    features: ["Full Ecosystem", "Pro Configurations", "Setup Service"],
     rating: 4,
-    isNew: true,
-    collectorGrade: "A",
+    collectorGrade: "A++",
     imageUrl:
-      "https://i.pinimg.com/736x/9d/0e/6e/9d0e6ed1f67f7dd0e3b6e157885cba72.jpg",
+      "https://i.pinimg.com/736x/5a/ad/ef/5aadef3416eb79570a34a3d2bef49b04.jpg",
   },
   {
     id: 7,
-    title: "Cristiano's Training Gear Set",
-    category: "Player Equipment",
-    marketValueSAR: "75,000 SAR",
-    marketValueUSD: "$20,250",
-    description: "Complete training kit used by Ronaldo during preseason.",
+    title: "Five-Star Hospitality Credit Vault",
+    category: "Luxury Lifestyle",
+    marketValueSAR: "1,000,000 SAR",
+    marketValueUSD: "$267,000",
+    description:
+      "Unlimited five-star hospitality credits for global luxury hotels, resorts, and fine dining.",
     convertible: true,
-    color: "from-orange-500 via-amber-500 to-yellow-500",
-    rarity: "Rare",
-    badge: "Training",
-    features: ["Full Set", "Match Used", "Certificate"],
-    rating: 4,
-    collectorGrade: "A+",
+    color: "from-amber-500 via-orange-600 to-red-600",
+    rarity: "Unlimited Access",
+    badge: "Global Luxury",
+    features: ["Global Network", "Unlimited Credits", "Concierge Service"],
+    rating: 5,
+    collectorGrade: "A++++",
     imageUrl:
-      "https://i.pinimg.com/736x/d4/ad/17/d4ad17b024a790a18ad9fe832d86ca1c.jpg",
+      "https://i.pinimg.com/1200x/1f/60/48/1f60480f9dcfea15cf73c399766c89ac.jpg",
   },
   {
     id: 8,
-    title: "Match-Worn Captain's Armband",
-    category: "Match Memorabilia",
-    marketValueSAR: "45,000 SAR",
-    marketValueUSD: "$12,150",
-    description: "Official captain's armband worn during derby match.",
+    title: "Luxury Fashion Trunk (Louis Vuitton / Dior / Hermès)",
+    category: "Haute Couture",
+    marketValueSAR: "680,000 SAR",
+    marketValueUSD: "$181,000",
+    description:
+      "Curated collection of luxury fashion pieces from premier maisons with personal styling service.",
     convertible: true,
-    color: "from-indigo-500 via-purple-600 to-pink-600",
-    rarity: "Limited",
-    badge: "Captain",
-    features: ["Match Used", "Authenticated", "Framed"],
-    rating: 4,
-    collectorGrade: "A+",
+    color: "from-brown-600 via-amber-800 to-yellow-900",
+    rarity: "Designer Collection",
+    badge: "Haute Couture",
+    features: ["Multiple Designers", "Personal Styling", "Seasonal Updates"],
+    rating: 5,
+    isNew: true,
+    collectorGrade: "A+++",
     imageUrl:
-      "https://i.pinimg.com/736x/6d/b0/bb/6db0bbb53587d635a52b566a0a5e0ce3.jpg",
+      "https://i.pinimg.com/736x/f8/77/4d/f8774dbd5b2ddda1f5f9b70bb475920c.jpg",
+  },
+  {
+    id: 9,
+    title: "2026 Cadillac Escalade-V Super-SUV Vault",
+    category: "Ultra-Luxury Performance SUV",
+    marketValueSAR: "650,000 SAR",
+    marketValueUSD: "$173,500",
+    description:
+      "The most powerful Cadillac ever built, featuring a supercharged 6.2L V-8 with 682 horsepower, a 55-inch curved OLED display, and Super Cruise hands-free driving technology[citation:2].",
+    convertible: false,
+    color: "from-gray-900 via-slate-800 to-slate-950",
+    rarity: "Supercharged Flagship",
+    badge: "American Super-SUV",
+    features: [
+      "682 HP Supercharged V8",
+      "AKG 42-Speaker Studio Audio",
+      "Semi-Aniline Leather Throughout[citation:2]",
+    ],
+    rating: 5,
+    isNew: true,
+    collectorGrade: "A++",
+    imageUrl:
+      "https://i.pinimg.com/1200x/31/04/03/3104034cdc1820e6c58cdb44fd762b0e.jpg",
+  },
+  {
+    id: 10,
+    title: "BMW M3 Competition xDrive Sedan Performance Vault",
+    category: "German High-Performance Sedan",
+    marketValueSAR: "400,000 SAR",
+    marketValueUSD: "$106,580",
+    description:
+      "A 2025 Grand Prize M3 featuring the Competition package and xDrive all-wheel drive for ultimate performance and precision, finished in exclusive Individual Ruby Star Neo paint[citation:7].",
+    convertible: false,
+    color: "from-rose-800 via-red-700 to-ruby-900",
+    rarity: "Competition Grand Prize",
+    badge: "///M Power",
+    features: [
+      "M Carbon Bucket Seats",
+      "Executive & Driving Assistance Packages",
+      "Carbon Fiber Trim[citation:7]",
+    ],
+    rating: 5,
+    isPopular: true,
+    collectorGrade: "A+++",
+    imageUrl:
+      "https://i.pinimg.com/736x/f6/fc/e7/f6fce7399b56980e8ad4810d35a0d8ab.jpg",
+  },
+  {
+    id: 11,
+    title: "1300HP Twin-Turbo 1969 Camaro Restomod Vault",
+    category: "American Icon Restomod",
+    marketValueSAR: "1,125,000 SAR",
+    marketValueUSD: "$300,000",
+    description:
+      "A no-expense-spared, purpose-built icon. This '69 Camaro is engineered to modern supercar standards with a race-built twin-turbo LSX V8 producing an estimated 1,300 horsepower[citation:10].",
+    convertible: false,
+    color: "from-gray-700 via-gray-600 to-slate-500",
+    rarity: "SEMA Project Masterpiece",
+    badge: "Restomod Legend",
+    features: [
+      "Forged 1,300 HP LME LSX Engine",
+      "Complete Detroit Speed Chassis",
+      "Custom PPG Destroyer Gray Finish[citation:10]",
+    ],
+    rating: 5,
+    isNew: true,
+    collectorGrade: "A++++",
+    imageUrl:
+      "https://i.pinimg.com/736x/1c/16/46/1c1646ddc0a64f8cf0be0f69805a0fa6.jpg",
   },
 ];
 
@@ -388,31 +467,6 @@ const Prizes = () => {
               ))}
             </motion.div>
           </AnimatePresence>
-        </div>
-
-        {/* Pagination Dots */}
-        <div className="flex justify-center items-center mt-8 space-x-3">
-          {Array.from({ length: maxIndex + 1 }).map((_, index) => (
-            <button
-              key={index}
-              onClick={() => goToSlide(index)}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                index === currentIndex
-                  ? "w-8 bg-gradient-to-r from-yellow-400 to-yellow-600"
-                  : "bg-gray-700 hover:bg-gray-600"
-              }`}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
-        </div>
-
-        {/* Slide Counter */}
-        <div className="text-center mt-4 text-gray-400 text-sm">
-          <span className="text-yellow-400 font-bold">
-            {currentIndex + 1} -{" "}
-            {Math.min(currentIndex + itemsPerView, totalItems)}
-          </span>{" "}
-          of {totalItems} items
         </div>
       </div>
     </section>

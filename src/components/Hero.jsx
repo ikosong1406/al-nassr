@@ -89,7 +89,7 @@ const Hero = () => {
     return () => clearInterval(playerTimer);
   }, []);
 
-  const jackpotSAR = 20000000;
+  const jackpotSAR = 200000000;
   const jackpotUSD = (jackpotSAR * 0.27).toLocaleString();
   const currentPlayer = rotatingPlayers[currentPlayerIndex];
 
@@ -249,7 +249,7 @@ const Hero = () => {
               <div className="bg-gradient-to-br from-yellow-600/20 to-yellow-700/20 border-2 border-yellow-500/30 rounded-2xl p-5 backdrop-blur-sm">
                 <div className="text-center">
                   <div className="text-gray-300 mb-3 text-lg font-semibold">
-                    Grand Jackpot
+                    Prizes Worth
                   </div>
 
                   {/* Saudi Riyal */}
@@ -455,7 +455,7 @@ const Hero = () => {
               <div className="bg-gradient-to-br from-yellow-600/20 to-yellow-700/20 border-2 border-yellow-500/30 rounded-2xl p-6 backdrop-blur-sm">
                 <div className="text-center">
                   <div className="text-gray-300 mb-3 text-lg font-semibold">
-                    Grand Jackpot
+                    Prizes Worth
                   </div>
 
                   {/* Saudi Riyal */}
