@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
 import {
   FaChartLine,
   FaUser,
@@ -9,8 +12,10 @@ import {
   FaEyeSlash,
   FaArrowRight,
 } from "react-icons/fa";
+import Api from "../components/Api";
 
-const Signup = ({ onNavigate }) => {
+const Signup = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -21,11 +26,60 @@ const Signup = ({ onNavigate }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [agreedToTerms, setAgreedToTerms] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle signup logic
-    console.log("Signup data:", formData);
+
+    // Validation
+    if (!agreedToTerms) {
+      toast.error("You must agree to the terms and conditions");
+      return;
+    }
+
+    if (formData.password !== formData.confirmPassword) {
+      toast.error("Passwords do not match");
+      return;
+    }
+
+    if (formData.password.length < 6) {
+      toast.error("Password must be at least 6 characters");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      // Send signup request
+      const response = await axios.post(`${Api}/signup`, {
+        firstname: formData.firstName,
+        lastname: formData.lastName,
+        email: formData.email.toLowerCase(),
+        password: formData.password,
+      });
+
+      if (response.data.success) {
+        // Show success toast
+        toast.success(
+          "Account created successfully! Please login with your credentials",
+          {
+            duration: 3000,
+          },
+        );
+
+        // Wait a moment then navigate to login
+        setTimeout(() => {
+          navigate("/login");
+        }, 1500);
+      }
+    } catch (error) {
+      // Handle errors
+      const errorMessage =
+        error.response?.data?.message || "Signup failed. Please try again.";
+      toast.error(errorMessage);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -36,63 +90,31 @@ const Signup = ({ onNavigate }) => {
     }));
   };
 
-  const passwordStrength = (password) => {
-    if (!password) return { score: 0, label: "", color: "" };
-
-    let score = 0;
-    if (password.length >= 8) score++;
-    if (/[a-z]/.test(password)) score++;
-    if (/[A-Z]/.test(password)) score++;
-    if (/\d/.test(password)) score++;
-    if (/[^A-Za-z0-9]/.test(password)) score++;
-
-    const colors = [
-      "bg-gray-700",
-      "bg-red-500",
-      "bg-orange-500",
-      "bg-yellow-500",
-      "bg-teal-400",
-      "bg-teal-500",
-    ];
-    return { score, color: colors[score] };
-  };
-
-  const strength = passwordStrength(formData.password);
-
   return (
     <div className="min-h-screen text-white overflow-hidden">
-      {/* Background Image with Overlay - Stretched to fill */}
+      {/* Toast notifications */}
+      <Toaster position="top-center" />
+
+      {/* Background */}
       <div className="fixed inset-0 z-0">
-        {/* Background Image with full coverage */}
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage: `url('https://i.pinimg.com/1200x/11/e3/7d/11e37dbd7c0c06fe6659f35a3bf9d974.jpg')`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundAttachment: "fixed",
           }}
         />
-
-        {/* Yellow Semi-Transparent Overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-yellow-300/30 via-yellow-400/20 to-black/80" />
-
-        {/* Pattern overlay */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(253,224,71,0.1),transparent_50%)]"></div>
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(59,130,246,0.1),transparent_50%)]"></div>
-        </div>
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 min-h-screen flex items-center justify-center p-2">
-        <div className="w-full max-w-md mx-auto">
+      <div className="relative z-10 min-h-screen flex items-center justify-center p-4">
+        <div className="w-full max-w-md">
           {/* Signup Form */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="bg-gradient-to-br from-blue-900/90 to-blue-950/90 border border-yellow-300/30 rounded-3xl p-4 md:p-10 backdrop-blur-sm shadow-2xl"
+            className="bg-gradient-to-br from-blue-900/90 to-blue-950/90 border border-yellow-300/30 rounded-3xl p-8 backdrop-blur-sm"
           >
             <div className="text-center mb-8">
               <div className="inline-flex items-center space-x-2 bg-yellow-500/10 px-4 py-2 rounded-full mb-4">
@@ -126,8 +148,10 @@ const Signup = ({ onNavigate }) => {
                       name="firstName"
                       value={formData.firstName}
                       onChange={handleChange}
-                      className="w-full pl-10 pr-4 py-3 bg-blue-900/40 border border-yellow-300/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:border-transparent transition-all placeholder-gray-400"
+                      className="w-full pl-10 pr-4 py-3 bg-blue-900/40 border border-yellow-300/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-300"
                       placeholder="John"
+                      required
+                      disabled={loading}
                     />
                   </div>
                 </div>
@@ -145,8 +169,10 @@ const Signup = ({ onNavigate }) => {
                       name="lastName"
                       value={formData.lastName}
                       onChange={handleChange}
-                      className="w-full pl-10 pr-4 py-3 bg-blue-900/40 border border-yellow-300/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:border-transparent transition-all placeholder-gray-400"
+                      className="w-full pl-10 pr-4 py-3 bg-blue-900/40 border border-yellow-300/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-300"
                       placeholder="Doe"
+                      required
+                      disabled={loading}
                     />
                   </div>
                 </div>
@@ -166,8 +192,10 @@ const Signup = ({ onNavigate }) => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full pl-10 pr-4 py-3 bg-blue-900/40 border border-yellow-300/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:border-transparent transition-all placeholder-gray-400"
+                    className="w-full pl-10 pr-4 py-3 bg-blue-900/40 border border-yellow-300/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-300"
                     placeholder="you@example.com"
+                    required
+                    disabled={loading}
                   />
                 </div>
               </div>
@@ -186,13 +214,16 @@ const Signup = ({ onNavigate }) => {
                     name="password"
                     value={formData.password}
                     onChange={handleChange}
-                    className="w-full pl-10 pr-12 py-3 bg-blue-900/40 border border-yellow-300/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:border-transparent transition-all placeholder-gray-400"
+                    className="w-full pl-10 pr-12 py-3 bg-blue-900/40 border border-yellow-300/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-300"
                     placeholder="••••••••"
+                    required
+                    disabled={loading}
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute inset-y-0 right-0 pr-3 flex items-center hover:text-yellow-300 transition-colors"
+                    className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                    disabled={loading}
                   >
                     {showPassword ? (
                       <FaEyeSlash className="text-gray-400 hover:text-yellow-300" />
@@ -201,29 +232,6 @@ const Signup = ({ onNavigate }) => {
                     )}
                   </button>
                 </div>
-
-                {/* Password Strength Indicator */}
-                {formData.password && (
-                  <div className="mt-3">
-                    <div className="flex justify-between items-center mb-1">
-                      <span className="text-xs text-gray-400">
-                        Password strength
-                      </span>
-                      <div className="flex space-x-1">
-                        {[1, 2, 3, 4, 5].map((index) => (
-                          <div
-                            key={index}
-                            className={`w-2 h-2 rounded-full ${
-                              index <= strength.score
-                                ? strength.color
-                                : "bg-gray-700"
-                            }`}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                )}
               </div>
 
               {/* Confirm Password Field */}
@@ -240,13 +248,16 @@ const Signup = ({ onNavigate }) => {
                     name="confirmPassword"
                     value={formData.confirmPassword}
                     onChange={handleChange}
-                    className="w-full pl-10 pr-12 py-3 bg-blue-900/40 border border-yellow-300/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:border-transparent transition-all placeholder-gray-400"
+                    className="w-full pl-10 pr-12 py-3 bg-blue-900/40 border border-yellow-300/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-300"
                     placeholder="••••••••"
+                    required
+                    disabled={loading}
                   />
                   <button
                     type="button"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    className="absolute inset-y-0 right-0 pr-3 flex items-center hover:text-yellow-300 transition-colors"
+                    className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                    disabled={loading}
                   >
                     {showConfirmPassword ? (
                       <FaEyeSlash className="text-gray-400 hover:text-yellow-300" />
@@ -265,6 +276,7 @@ const Signup = ({ onNavigate }) => {
                   checked={agreedToTerms}
                   onChange={(e) => setAgreedToTerms(e.target.checked)}
                   className="w-4 h-4 text-yellow-300 bg-blue-900/40 border-yellow-500/50 rounded focus:ring-yellow-300 focus:ring-2 mt-1"
+                  disabled={loading}
                 />
                 <label htmlFor="terms" className="ml-2 text-sm text-gray-300">
                   I agree to the{" "}
@@ -289,10 +301,38 @@ const Signup = ({ onNavigate }) => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="w-full py-4 bg-gradient-to-r from-yellow-300 to-yellow-400 text-blue-900 font-bold rounded-xl transition-all flex items-center justify-center space-x-3 shadow-lg shadow-yellow-500/20"
+                disabled={loading}
+                className="w-full py-4 bg-gradient-to-r from-yellow-300 to-yellow-400 text-blue-900 font-bold rounded-xl flex items-center justify-center space-x-3 shadow-lg shadow-yellow-500/20 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <span className="text-lg">Create Account</span>
-                <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+                {loading ? (
+                  <span className="flex items-center">
+                    <svg
+                      className="animate-spin h-5 w-5 mr-3 text-blue-900"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                        fill="none"
+                      />
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      />
+                    </svg>
+                    Creating Account...
+                  </span>
+                ) : (
+                  <>
+                    <span className="text-lg">Create Account</span>
+                    <FaArrowRight />
+                  </>
+                )}
               </motion.button>
             </form>
 
@@ -302,17 +342,10 @@ const Signup = ({ onNavigate }) => {
                 Already have an account?{" "}
                 <a
                   href="/login"
-                  className="text-yellow-300 hover:text-yellow-300 font-semibold transition-colors"
+                  className="text-yellow-300 hover:text-yellow-300 font-semibold"
                 >
                   Sign in
                 </a>
-              </p>
-            </div>
-
-            {/* Security & Risk Disclosure */}
-            <div className="mt-6 space-y-3">
-              <p className="text-xs text-gray-400 text-center">
-                Your data is secured with 256-bit SSL encryption
               </p>
             </div>
           </motion.div>
